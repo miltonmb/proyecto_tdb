@@ -111,6 +111,11 @@ public class principal extends javax.swing.JFrame {
         jLabel9.setText("Email:");
 
         bt_registrarCliente.setText("Registrar");
+        bt_registrarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_registrarClienteMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_clienteRegistroLayout = new javax.swing.GroupLayout(jd_clienteRegistro.getContentPane());
         jd_clienteRegistro.getContentPane().setLayout(jd_clienteRegistroLayout);
@@ -191,6 +196,11 @@ public class principal extends javax.swing.JFrame {
         jLabel14.setText("Nombre Completo:");
 
         bt_registrarCliente1.setText("Registrar");
+        bt_registrarCliente1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_registrarCliente1MouseClicked(evt);
+            }
+        });
 
         jLabel15.setText("N° de Telefono:");
 
@@ -254,6 +264,11 @@ public class principal extends javax.swing.JFrame {
         jLabel3.setText("Contraseña:");
 
         jl_registrar.setText("ó click aqui para Registrarse!");
+        jl_registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_registrarMouseClicked(evt);
+            }
+        });
 
         bt_login.setText("INICIAR SESION");
         bt_login.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -307,11 +322,7 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseClicked
-        this.jd_elegirTipo.pack();
-        this.jd_elegirTipo.setResizable(false);
-        this.jd_elegirTipo.setLocationRelativeTo(this);
-        this.jd_elegirTipo.setVisible(true);
-        this.hide();
+
     }//GEN-LAST:event_bt_loginMouseClicked
 
     private void bt_elegirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_elegirMouseClicked
@@ -343,6 +354,24 @@ public class principal extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_bt_elegirMouseClicked
+
+    private void bt_registrarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarClienteMouseClicked
+        this.jd_clienteRegistro.setVisible(false);
+        this.show();
+    }//GEN-LAST:event_bt_registrarClienteMouseClicked
+
+    private void bt_registrarCliente1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarCliente1MouseClicked
+        this.jd_AsesorMecanicoRegistro.setVisible(false);
+        this.show();
+    }//GEN-LAST:event_bt_registrarCliente1MouseClicked
+
+    private void jl_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_registrarMouseClicked
+        this.jd_elegirTipo.pack();
+        this.jd_elegirTipo.setResizable(false);
+        this.jd_elegirTipo.setLocationRelativeTo(this);
+        this.jd_elegirTipo.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_jl_registrarMouseClicked
 
     /**
      * @param args the command line arguments
