@@ -5,6 +5,8 @@
  */
 package proyecto_tdb;
 
+import java.awt.Color;
+
 /**
  *
  * @author milton
@@ -265,6 +267,12 @@ public class principal extends javax.swing.JFrame {
 
         jl_registrar.setText("ó click aqui para Registrarse!");
         jl_registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jl_registrarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jl_registrarMouseReleased(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jl_registrarMouseClicked(evt);
             }
@@ -372,6 +380,14 @@ public class principal extends javax.swing.JFrame {
         this.jd_elegirTipo.setVisible(true);
         this.hide();
     }//GEN-LAST:event_jl_registrarMouseClicked
+
+    private void jl_registrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_registrarMousePressed
+        this.jl_registrar.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jl_registrarMousePressed
+
+    private void jl_registrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_registrarMouseReleased
+        this.jl_registrar.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jl_registrarMouseReleased
 
     /**
      * @param args the command line arguments
