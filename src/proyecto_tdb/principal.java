@@ -64,6 +64,7 @@ public class principal extends javax.swing.JFrame {
         btn_salir = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jmi_verEstadosCliente = new javax.swing.JMenuItem();
         jmi_registroCarro = new javax.swing.JMenuItem();
         jmi_modificarPerfilCliente = new javax.swing.JMenuItem();
         jmi_hacerCitaCliente = new javax.swing.JMenuItem();
@@ -82,22 +83,30 @@ public class principal extends javax.swing.JFrame {
         jd_hacerCita = new javax.swing.JDialog();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jt_codCitaHacer = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jt_codCitaTaller = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jt_codClienteCita = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jt_nombreClienteCita = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jt_placaAutoCita = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jdate_fechaIngresoCita = new com.toedter.calendar.JDateChooser();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        jdate_fechaEntregaCita = new com.toedter.calendar.JDateChooser();
+        btn_realizarCita = new javax.swing.JButton();
         cb_horaIngresa = new javax.swing.JComboBox<>();
+        jd_mantenimientoReparacion = new javax.swing.JDialog();
+        cb_elegirTipoReparacion = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ta_descripcionReparacion = new javax.swing.JTextArea();
+        bt_continuarReparacion = new javax.swing.JButton();
+        jd_verEstadoVehiculos = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tb_verEstadosCitasCliente = new javax.swing.JTable();
         tf_usuarioLogin = new javax.swing.JTextField();
         pass_contraseñaLogin = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -318,6 +327,14 @@ public class principal extends javax.swing.JFrame {
 
         jMenu1.setText("Opciones");
 
+        jmi_verEstadosCliente.setText("Ver estado de citas");
+        jmi_verEstadosCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_verEstadosClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmi_verEstadosCliente);
+
         jmi_registroCarro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         jmi_registroCarro.setText("Registrar un carro");
         jmi_registroCarro.addActionListener(new java.awt.event.ActionListener() {
@@ -481,7 +498,12 @@ public class principal extends javax.swing.JFrame {
 
         jLabel28.setText("Fecha de entrega:");
 
-        jButton1.setText("REALIZAR");
+        btn_realizarCita.setText("REALIZAR");
+        btn_realizarCita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_realizarCitaMouseClicked(evt);
+            }
+        });
 
         cb_horaIngresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", " ", " " }));
 
@@ -507,30 +529,30 @@ public class principal extends javax.swing.JFrame {
                                         .addComponent(jLabel22)
                                         .addGap(6, 6, 6)))
                                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)))
+                                    .addComponent(jt_codCitaTaller, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                                    .addComponent(jt_codCitaHacer)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_hacerCitaLayout.createSequentialGroup()
                                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel23)
                                     .addComponent(jLabel24))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))))
+                                    .addComponent(jt_codClienteCita)
+                                    .addComponent(jt_nombreClienteCita, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                                 .addComponent(jLabel25)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField5))
+                                .addComponent(jt_placaAutoCita))
                             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                                 .addComponent(jLabel26)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                                 .addComponent(jLabel28)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                                 .addComponent(jLabel27)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -538,7 +560,7 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_realizarCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(264, 264, 264))
         );
         jd_hacerCitaLayout.setVerticalGroup(
@@ -546,36 +568,94 @@ public class principal extends javax.swing.JFrame {
             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jt_codCitaHacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel25)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jt_placaAutoCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jt_codCitaTaller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel26))))
                 .addGap(18, 18, 18)
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jt_codClienteCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
                     .addComponent(cb_horaIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel24)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jt_nombreClienteCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel28))
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addComponent(btn_realizarCita, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addContainerGap())
+        );
+
+        cb_elegirTipoReparacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mantenimiento", "Reparación" }));
+
+        ta_descripcionReparacion.setColumns(20);
+        ta_descripcionReparacion.setRows(5);
+        jScrollPane1.setViewportView(ta_descripcionReparacion);
+
+        bt_continuarReparacion.setText("CONTINUAR");
+
+        javax.swing.GroupLayout jd_mantenimientoReparacionLayout = new javax.swing.GroupLayout(jd_mantenimientoReparacion.getContentPane());
+        jd_mantenimientoReparacion.getContentPane().setLayout(jd_mantenimientoReparacionLayout);
+        jd_mantenimientoReparacionLayout.setHorizontalGroup(
+            jd_mantenimientoReparacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mantenimientoReparacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_mantenimientoReparacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_mantenimientoReparacionLayout.createSequentialGroup()
+                        .addComponent(bt_continuarReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 180, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cb_elegirTipoReparacion, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jd_mantenimientoReparacionLayout.setVerticalGroup(
+            jd_mantenimientoReparacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mantenimientoReparacionLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(cb_elegirTipoReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_continuarReparacion, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        tb_verEstadosCitasCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tb_verEstadosCitasCliente);
+
+        javax.swing.GroupLayout jd_verEstadoVehiculosLayout = new javax.swing.GroupLayout(jd_verEstadoVehiculos.getContentPane());
+        jd_verEstadoVehiculos.getContentPane().setLayout(jd_verEstadoVehiculosLayout);
+        jd_verEstadoVehiculosLayout.setHorizontalGroup(
+            jd_verEstadoVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+        );
+        jd_verEstadoVehiculosLayout.setVerticalGroup(
+            jd_verEstadoVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -725,6 +805,20 @@ public class principal extends javax.swing.JFrame {
         this.jd_clienteRegistro.setVisible(true);
     }//GEN-LAST:event_jmi_modificarPerfilClienteActionPerformed
 
+    private void btn_realizarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizarCitaMouseClicked
+        this.jd_mantenimientoReparacion.pack();
+        this.jd_mantenimientoReparacion.setLocationRelativeTo(this);
+        this.jd_mantenimientoReparacion.setResizable(false);
+        this.jd_mantenimientoReparacion.setVisible(true);
+    }//GEN-LAST:event_btn_realizarCitaMouseClicked
+
+    private void jmi_verEstadosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_verEstadosClienteActionPerformed
+        this.jd_verEstadoVehiculos.pack();
+        this.jd_verEstadoVehiculos.setLocationRelativeTo(this);
+        this.jd_verEstadoVehiculos.setResizable(false);
+        this.jd_verEstadoVehiculos.setVisible(true);
+    }//GEN-LAST:event_jmi_verEstadosClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -761,18 +855,18 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_continuarReparacion;
     private javax.swing.JButton bt_elegir;
     private javax.swing.JButton bt_ingresarTelefonosCliente;
     private javax.swing.JButton bt_login;
     private javax.swing.JButton bt_registrarCliente;
     private javax.swing.JButton bt_registrarCliente1;
+    private javax.swing.JButton btn_realizarCita;
     private javax.swing.JButton btn_registrarAuto;
     private javax.swing.JButton btn_salir;
+    private javax.swing.JComboBox<String> cb_elegirTipoReparacion;
     private javax.swing.JComboBox<String> cb_elegirUsuario;
     private javax.swing.JComboBox<String> cb_horaIngresa;
-    private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -803,39 +897,48 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jd_AsesorMecanicoRegistro;
     private javax.swing.JDialog jd_clienteRegistro;
     private javax.swing.JDialog jd_elegirTipo;
     private javax.swing.JDialog jd_hacerCita;
+    private javax.swing.JDialog jd_mantenimientoReparacion;
     private javax.swing.JDialog jd_perfilAdmin;
     private javax.swing.JDialog jd_perfilAsesor;
     private javax.swing.JDialog jd_perfilMecanico;
     private javax.swing.JDialog jd_perfilUsuario;
     private javax.swing.JDialog jd_registroAuto;
+    private javax.swing.JDialog jd_verEstadoVehiculos;
+    private com.toedter.calendar.JDateChooser jdate_fechaEntregaCita;
+    private com.toedter.calendar.JDateChooser jdate_fechaIngresoCita;
     private javax.swing.JLabel jl_nombreCliente;
     private javax.swing.JLabel jl_registrar;
     private javax.swing.JMenuItem jmi_borrarCliente;
     private javax.swing.JMenuItem jmi_hacerCitaCliente;
     private javax.swing.JMenuItem jmi_modificarPerfilCliente;
     private javax.swing.JMenuItem jmi_registroCarro;
+    private javax.swing.JMenuItem jmi_verEstadosCliente;
     private javax.swing.JTextField jt_ClienteEmailRegistro;
     private javax.swing.JTextField jt_ClienteNombreRegistro;
     private javax.swing.JTextField jt_IDClienteRegistro;
     private javax.swing.JTextField jt_clienteDireccionRegistro;
+    private javax.swing.JTextField jt_codCitaHacer;
+    private javax.swing.JTextField jt_codCitaTaller;
+    private javax.swing.JTextField jt_codClienteCita;
     private javax.swing.JTextField jt_idAMRegistro;
     private javax.swing.JTextField jt_modeloAutoRegistro;
     private javax.swing.JTextField jt_nombreAMRegistro;
+    private javax.swing.JTextField jt_nombreClienteCita;
     private javax.swing.JTextField jt_numeroMotor;
+    private javax.swing.JTextField jt_placaAutoCita;
     private javax.swing.JTextField jt_placaAutoRegistro;
     private javax.swing.JTextField jt_telefonoAMRegistro;
     private javax.swing.JTextField jt_tipoAMRegistro;
     private javax.swing.JPasswordField pass_contraseñaLogin;
     private javax.swing.JSpinner sp_cantidadTelefonosCliente;
+    private javax.swing.JTextArea ta_descripcionReparacion;
+    private javax.swing.JTable tb_verEstadosCitasCliente;
     private javax.swing.JTextField tf_usuarioLogin;
     // End of variables declaration//GEN-END:variables
 }
