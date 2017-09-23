@@ -94,10 +94,10 @@ public class principal extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel27 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
+        cb_horaIngresa = new javax.swing.JComboBox<>();
         tf_usuarioLogin = new javax.swing.JTextField();
         pass_contraseñaLogin = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -483,6 +483,8 @@ public class principal extends javax.swing.JFrame {
 
         jButton1.setText("REALIZAR");
 
+        cb_horaIngresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", " ", " " }));
+
         javax.swing.GroupLayout jd_hacerCitaLayout = new javax.swing.GroupLayout(jd_hacerCita.getContentPane());
         jd_hacerCita.getContentPane().setLayout(jd_hacerCitaLayout);
         jd_hacerCitaLayout.setHorizontalGroup(
@@ -531,8 +533,8 @@ public class principal extends javax.swing.JFrame {
                                 .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                                 .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField6)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cb_horaIngresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                 .addContainerGap()
@@ -563,7 +565,7 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jLabel23)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_horaIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -767,6 +769,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_registrarAuto;
     private javax.swing.JButton btn_salir;
     private javax.swing.JComboBox<String> cb_elegirUsuario;
+    private javax.swing.JComboBox<String> cb_horaIngresa;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
@@ -805,7 +808,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JDialog jd_AsesorMecanicoRegistro;
     private javax.swing.JDialog jd_clienteRegistro;
     private javax.swing.JDialog jd_elegirTipo;
