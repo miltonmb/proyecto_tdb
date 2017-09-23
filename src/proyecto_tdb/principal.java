@@ -57,7 +57,6 @@ public class principal extends javax.swing.JFrame {
         jt_nombreAMRegistro = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jt_telefonoAMRegistro = new javax.swing.JTextField();
-        jd_perfilAdmin = new javax.swing.JDialog();
         jd_perfilUsuario = new javax.swing.JDialog();
         jLabel13 = new javax.swing.JLabel();
         jl_nombreCliente = new javax.swing.JLabel();
@@ -67,10 +66,18 @@ public class principal extends javax.swing.JFrame {
         jmi_verEstadosCliente = new javax.swing.JMenuItem();
         jmi_registroCarro = new javax.swing.JMenuItem();
         jmi_modificarPerfilCliente = new javax.swing.JMenuItem();
+        jmi_verMensajes = new javax.swing.JMenuItem();
         jmi_hacerCitaCliente = new javax.swing.JMenuItem();
         jmi_borrarCliente = new javax.swing.JMenuItem();
         jd_perfilMecanico = new javax.swing.JDialog();
-        jd_perfilAsesor = new javax.swing.JDialog();
+        jLabel29 = new javax.swing.JLabel();
+        jl_nombreMecanico = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jmi_registroDeCitas = new javax.swing.JMenuItem();
+        jmi_citasAsignadas = new javax.swing.JMenuItem();
+        jmi_modificarPerfilMecanico = new javax.swing.JMenuItem();
+        jmi_eliminarPerfilMecanico = new javax.swing.JMenuItem();
         jd_registroAuto = new javax.swing.JDialog();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -107,6 +114,23 @@ public class principal extends javax.swing.JFrame {
         jd_verEstadoVehiculos = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         tb_verEstadosCitasCliente = new javax.swing.JTable();
+        jd_verMensajesCliente = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jlist_mensajes = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ta_mensajes = new javax.swing.JTextArea();
+        jd_verCitasAsignadas = new javax.swing.JDialog();
+        cb_citasAsignadas = new javax.swing.JComboBox<>();
+        jLabel30 = new javax.swing.JLabel();
+        bt_verEstadoCita = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        tf_verEstado = new javax.swing.JTextField();
+        cb_cambiarEstado = new javax.swing.JComboBox<>();
+        jLabel32 = new javax.swing.JLabel();
+        bt_cambiarEstado = new javax.swing.JButton();
+        jd_registroDeCitas = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tb_registroDeCitas = new javax.swing.JTable();
         tf_usuarioLogin = new javax.swing.JTextField();
         pass_contraseñaLogin = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -306,17 +330,6 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jd_perfilAdminLayout = new javax.swing.GroupLayout(jd_perfilAdmin.getContentPane());
-        jd_perfilAdmin.getContentPane().setLayout(jd_perfilAdminLayout);
-        jd_perfilAdminLayout.setHorizontalGroup(
-            jd_perfilAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jd_perfilAdminLayout.setVerticalGroup(
-            jd_perfilAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel13.setText("BIENVENIDO");
 
@@ -352,6 +365,15 @@ public class principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jmi_modificarPerfilCliente);
+
+        jmi_verMensajes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jmi_verMensajes.setText("Ver mensajes");
+        jmi_verMensajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_verMensajesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmi_verMensajes);
 
         jmi_hacerCitaCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         jmi_hacerCitaCliente.setText("Hacer una cita");
@@ -394,26 +416,70 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel29.setText("BIENVENIDO");
+
+        jl_nombreMecanico.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jl_nombreMecanico.setText("*Aqui pone el nombre del Mecanico*");
+
+        jMenu2.setText("File");
+
+        jmi_registroDeCitas.setText("Registro de citas");
+        jmi_registroDeCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_registroDeCitasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmi_registroDeCitas);
+
+        jmi_citasAsignadas.setText("Ver citas asignadas");
+        jmi_citasAsignadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_citasAsignadasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmi_citasAsignadas);
+
+        jmi_modificarPerfilMecanico.setText("Modificar mi perfil");
+        jmi_modificarPerfilMecanico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_modificarPerfilMecanicoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmi_modificarPerfilMecanico);
+
+        jmi_eliminarPerfilMecanico.setText("Eliminar mi perfil");
+        jMenu2.add(jmi_eliminarPerfilMecanico);
+
+        jMenuBar2.add(jMenu2);
+
+        jd_perfilMecanico.setJMenuBar(jMenuBar2);
+
         javax.swing.GroupLayout jd_perfilMecanicoLayout = new javax.swing.GroupLayout(jd_perfilMecanico.getContentPane());
         jd_perfilMecanico.getContentPane().setLayout(jd_perfilMecanicoLayout);
         jd_perfilMecanicoLayout.setHorizontalGroup(
             jd_perfilMecanicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 608, Short.MAX_VALUE)
+            .addGroup(jd_perfilMecanicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jd_perfilMecanicoLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jd_perfilMecanicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jl_nombreMecanico)
+                        .addGroup(jd_perfilMecanicoLayout.createSequentialGroup()
+                            .addGap(115, 115, 115)
+                            .addComponent(jLabel29)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jd_perfilMecanicoLayout.setVerticalGroup(
             jd_perfilMecanicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jd_perfilAsesorLayout = new javax.swing.GroupLayout(jd_perfilAsesor.getContentPane());
-        jd_perfilAsesor.getContentPane().setLayout(jd_perfilAsesorLayout);
-        jd_perfilAsesorLayout.setHorizontalGroup(
-            jd_perfilAsesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jd_perfilAsesorLayout.setVerticalGroup(
-            jd_perfilAsesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(jd_perfilMecanicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jd_perfilMecanicoLayout.createSequentialGroup()
+                    .addGap(79, 79, 79)
+                    .addComponent(jLabel29)
+                    .addGap(18, 18, 18)
+                    .addComponent(jl_nombreMecanico)
+                    .addContainerGap(80, Short.MAX_VALUE)))
         );
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -658,6 +724,120 @@ public class principal extends javax.swing.JFrame {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
+        jScrollPane3.setViewportView(jlist_mensajes);
+
+        ta_mensajes.setColumns(20);
+        ta_mensajes.setRows(5);
+        jScrollPane4.setViewportView(ta_mensajes);
+
+        javax.swing.GroupLayout jd_verMensajesClienteLayout = new javax.swing.GroupLayout(jd_verMensajesCliente.getContentPane());
+        jd_verMensajesCliente.getContentPane().setLayout(jd_verMensajesClienteLayout);
+        jd_verMensajesClienteLayout.setHorizontalGroup(
+            jd_verMensajesClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_verMensajesClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jd_verMensajesClienteLayout.setVerticalGroup(
+            jd_verMensajesClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_verMensajesClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_verMensajesClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jLabel30.setText("Mis citas asignadas:");
+
+        bt_verEstadoCita.setText("Ver Estado");
+
+        jLabel31.setText("Estado:");
+
+        tf_verEstado.setEditable(false);
+
+        cb_cambiarEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No ingresado", "Ingresado", "En Reparacion", "Pendientes de repuestos", "Listo", "Auto Retirado", "Cancelada" }));
+
+        jLabel32.setText("Cambiar estado:");
+
+        bt_cambiarEstado.setText("Cambiar");
+
+        javax.swing.GroupLayout jd_verCitasAsignadasLayout = new javax.swing.GroupLayout(jd_verCitasAsignadas.getContentPane());
+        jd_verCitasAsignadas.getContentPane().setLayout(jd_verCitasAsignadasLayout);
+        jd_verCitasAsignadasLayout.setHorizontalGroup(
+            jd_verCitasAsignadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_verCitasAsignadasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_verCitasAsignadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_verCitasAsignadasLayout.createSequentialGroup()
+                        .addComponent(jLabel30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_citasAsignadas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_verCitasAsignadasLayout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_verEstado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bt_verEstadoCita))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_verCitasAsignadasLayout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(cb_cambiarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_verCitasAsignadasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_cambiarEstado)))
+                .addContainerGap())
+        );
+        jd_verCitasAsignadasLayout.setVerticalGroup(
+            jd_verCitasAsignadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_verCitasAsignadasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_verCitasAsignadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_citasAsignadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_verCitasAsignadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_verEstadoCita)
+                    .addComponent(jLabel31)
+                    .addComponent(tf_verEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_verCitasAsignadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cb_cambiarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_cambiarEstado)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        tb_registroDeCitas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tb_registroDeCitas);
+
+        javax.swing.GroupLayout jd_registroDeCitasLayout = new javax.swing.GroupLayout(jd_registroDeCitas.getContentPane());
+        jd_registroDeCitas.getContentPane().setLayout(jd_registroDeCitasLayout);
+        jd_registroDeCitasLayout.setHorizontalGroup(
+            jd_registroDeCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+        );
+        jd_registroDeCitasLayout.setVerticalGroup(
+            jd_registroDeCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_registroDeCitasLayout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 25, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
@@ -819,6 +999,34 @@ public class principal extends javax.swing.JFrame {
         this.jd_verEstadoVehiculos.setVisible(true);
     }//GEN-LAST:event_jmi_verEstadosClienteActionPerformed
 
+    private void jmi_verMensajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_verMensajesActionPerformed
+        this.jd_verMensajesCliente.pack();
+        this.jd_verMensajesCliente.setLocationRelativeTo(this);
+        this.jd_verMensajesCliente.setResizable(false);
+        this.jd_verMensajesCliente.setVisible(true);
+    }//GEN-LAST:event_jmi_verMensajesActionPerformed
+
+    private void jmi_citasAsignadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_citasAsignadasActionPerformed
+        this.jd_verCitasAsignadas.pack();
+        this.jd_verCitasAsignadas.setLocationRelativeTo(this);
+        this.jd_verCitasAsignadas.setResizable(false);
+        this.jd_verCitasAsignadas.setVisible(true);
+    }//GEN-LAST:event_jmi_citasAsignadasActionPerformed
+
+    private void jmi_modificarPerfilMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_modificarPerfilMecanicoActionPerformed
+        this.jd_AsesorMecanicoRegistro.pack();
+        this.jd_AsesorMecanicoRegistro.setLocationRelativeTo(this);
+        this.jd_AsesorMecanicoRegistro.setResizable(false);
+        this.jd_AsesorMecanicoRegistro.setVisible(true);
+    }//GEN-LAST:event_jmi_modificarPerfilMecanicoActionPerformed
+
+    private void jmi_registroDeCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registroDeCitasActionPerformed
+        this.jd_registroDeCitas.pack();
+        this.jd_registroDeCitas.setLocationRelativeTo(this);
+        this.jd_registroDeCitas.setResizable(false);
+        this.jd_registroDeCitas.setVisible(true);
+    }//GEN-LAST:event_jmi_registroDeCitasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -855,15 +1063,19 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_cambiarEstado;
     private javax.swing.JButton bt_continuarReparacion;
     private javax.swing.JButton bt_elegir;
     private javax.swing.JButton bt_ingresarTelefonosCliente;
     private javax.swing.JButton bt_login;
     private javax.swing.JButton bt_registrarCliente;
     private javax.swing.JButton bt_registrarCliente1;
+    private javax.swing.JButton bt_verEstadoCita;
     private javax.swing.JButton btn_realizarCita;
     private javax.swing.JButton btn_registrarAuto;
     private javax.swing.JButton btn_salir;
+    private javax.swing.JComboBox<String> cb_cambiarEstado;
+    private javax.swing.JComboBox<String> cb_citasAsignadas;
     private javax.swing.JComboBox<String> cb_elegirTipoReparacion;
     private javax.swing.JComboBox<String> cb_elegirUsuario;
     private javax.swing.JComboBox<String> cb_horaIngresa;
@@ -888,7 +1100,11 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -896,29 +1112,42 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JDialog jd_AsesorMecanicoRegistro;
     private javax.swing.JDialog jd_clienteRegistro;
     private javax.swing.JDialog jd_elegirTipo;
     private javax.swing.JDialog jd_hacerCita;
     private javax.swing.JDialog jd_mantenimientoReparacion;
-    private javax.swing.JDialog jd_perfilAdmin;
-    private javax.swing.JDialog jd_perfilAsesor;
     private javax.swing.JDialog jd_perfilMecanico;
     private javax.swing.JDialog jd_perfilUsuario;
     private javax.swing.JDialog jd_registroAuto;
+    private javax.swing.JDialog jd_registroDeCitas;
+    private javax.swing.JDialog jd_verCitasAsignadas;
     private javax.swing.JDialog jd_verEstadoVehiculos;
+    private javax.swing.JDialog jd_verMensajesCliente;
     private com.toedter.calendar.JDateChooser jdate_fechaEntregaCita;
     private com.toedter.calendar.JDateChooser jdate_fechaIngresoCita;
     private javax.swing.JLabel jl_nombreCliente;
+    private javax.swing.JLabel jl_nombreMecanico;
     private javax.swing.JLabel jl_registrar;
+    private javax.swing.JList<String> jlist_mensajes;
     private javax.swing.JMenuItem jmi_borrarCliente;
+    private javax.swing.JMenuItem jmi_citasAsignadas;
+    private javax.swing.JMenuItem jmi_eliminarPerfilMecanico;
     private javax.swing.JMenuItem jmi_hacerCitaCliente;
     private javax.swing.JMenuItem jmi_modificarPerfilCliente;
+    private javax.swing.JMenuItem jmi_modificarPerfilMecanico;
     private javax.swing.JMenuItem jmi_registroCarro;
+    private javax.swing.JMenuItem jmi_registroDeCitas;
     private javax.swing.JMenuItem jmi_verEstadosCliente;
+    private javax.swing.JMenuItem jmi_verMensajes;
     private javax.swing.JTextField jt_ClienteEmailRegistro;
     private javax.swing.JTextField jt_ClienteNombreRegistro;
     private javax.swing.JTextField jt_IDClienteRegistro;
@@ -938,7 +1167,10 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPasswordField pass_contraseñaLogin;
     private javax.swing.JSpinner sp_cantidadTelefonosCliente;
     private javax.swing.JTextArea ta_descripcionReparacion;
+    private javax.swing.JTextArea ta_mensajes;
+    private javax.swing.JTable tb_registroDeCitas;
     private javax.swing.JTable tb_verEstadosCitasCliente;
     private javax.swing.JTextField tf_usuarioLogin;
+    private javax.swing.JTextField tf_verEstado;
     // End of variables declaration//GEN-END:variables
 }
