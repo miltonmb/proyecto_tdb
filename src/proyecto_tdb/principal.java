@@ -1001,6 +1001,11 @@ public class principal extends javax.swing.JFrame {
         jLabel30.setText("Mis citas asignadas:");
 
         bt_verEstadoCita.setText("Ver Estado");
+        bt_verEstadoCita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_verEstadoCitaMouseClicked(evt);
+            }
+        });
 
         jLabel31.setText("Estado:");
 
@@ -1016,6 +1021,11 @@ public class principal extends javax.swing.JFrame {
         jLabel32.setText("Cambiar estado:");
 
         bt_cambiarEstado.setText("Cambiar");
+        bt_cambiarEstado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_cambiarEstadoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_verCitasAsignadasLayout = new javax.swing.GroupLayout(jd_verCitasAsignadas.getContentPane());
         jd_verCitasAsignadas.getContentPane().setLayout(jd_verCitasAsignadasLayout);
@@ -1994,16 +2004,16 @@ public class principal extends javax.swing.JFrame {
         if (cb_tipo_addCita.getSelectedItem().toString().equals("MANTENIMIENTO")) {
             try {
                 conection.conectar();
-                String salida = "INSERT INTO TBL_MANTENIMIENTO VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText()+"')";
+                String salida = "INSERT INTO TBL_MANTENIMIENTO VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
                 conection.statement.execute(salida);
                 System.out.println(salida);
                 conection.close();
             } catch (Exception e) {
             }
-        }else{
+        } else {
             try {
                 conection.conectar();
-                String salida = "INSERT INTO TBL_REPARACION VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText()+"')";
+                String salida = "INSERT INTO TBL_REPARACION VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
                 conection.statement.execute(salida);
                 System.out.println(salida);
                 conection.close();
@@ -2015,13 +2025,13 @@ public class principal extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        String bandera="";
+        String bandera = "";
         try {
             conection.conectar();
             conection.statement.execute("SELECT (ID_PERSONA,PRIMERNOMBRE,SEGUNDONOMBRE,PRIMERAPELLIDO,SEGUNDOAPELLIDO) FROM TBL_PERSONA where ID_PERSONA=" + jt_codClienteCita.getText());
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
-                bandera=rs.getString(1);
+                bandera = rs.getString(1);
                 jt_nombreClienteCita.setText(bandera + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4));
             }
             conection.close();
@@ -2089,24 +2099,58 @@ public class principal extends javax.swing.JFrame {
     private void jd_verEstadoVehiculosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_verEstadoVehiculosComponentShown
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) tb_verEstadosCitasCliente.getModel();
-
-        conection.conectar();
         try {
-            conection.statement.execute("SELECT (PLACA_DE_CARRO, ESTADO_CITA) FROM CITA where ID_CLIENTE=" + login);
+            conection.conectar();
+            conection.statement.execute("SELECT (PLACA_DE_CARRO, ESTADO_CITA) FROM CITA where ID_CLIENTE =" + login);
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
                 Object[] r = {rs.getString(1), rs.getString(2)};
                 modelo.addRow(r);
             }
+            conection.close();
         } catch (Exception e) {
         }
-        conection.close();
     }//GEN-LAST:event_jd_verEstadoVehiculosComponentShown
 
     private void jd_verCitasAsignadasComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_verCitasAsignadasComponentShown
         // TODO add your handling code here:
-        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try {
+            conection.conectar();
+            conection.statement.execute("SELECT (CODIGO_CITAS) FROM TBL_CITAS_ASIGNADAS where ID_MECANICO =" + login);
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                modelo.addElement(rs.getInt(1));
+            }
+            conection.close();
+        } catch (Exception e) {
+        }
+        cb_citasAsignadas.setModel(modelo);
     }//GEN-LAST:event_jd_verCitasAsignadasComponentShown
+
+    private void bt_verEstadoCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_verEstadoCitaMouseClicked
+        // TODO add your handling code here:
+        try {
+            conection.conectar();
+            conection.statement.execute("SELECT (ESTADO_CITA) FROM CITA where CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString());
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                tf_verEstado.setText(rs.getInt(1) + "");
+            }
+            conection.close();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bt_verEstadoCitaMouseClicked
+
+    private void bt_cambiarEstadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cambiarEstadoMouseClicked
+        // TODO add your handling code here:
+        try {
+            conection.conectar();
+            conection.getConnection().prepareStatement("UPDATE CITA SET ESTADO_CITA WHERE CODIGOCITA ="+ cb_citasAsignadas.getSelectedItem().toString());
+            conection.close();
+        } catch (SQLException ex) {
+        }
+    }//GEN-LAST:event_bt_cambiarEstadoMouseClicked
 
     /**
      * @param args the command line arguments

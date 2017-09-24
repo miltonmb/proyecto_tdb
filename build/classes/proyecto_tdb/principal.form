@@ -1397,6 +1397,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver Estado"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_verEstadoCitaMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel31">
           <Properties>
@@ -1438,6 +1441,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cambiar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_cambiarEstadoMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
