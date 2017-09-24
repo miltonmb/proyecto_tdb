@@ -898,6 +898,12 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jd_verEstadoVehiculos.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jd_verEstadoVehiculosComponentShown(evt);
+            }
+        });
+
         tb_verEstadosCitasCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -924,7 +930,7 @@ public class principal extends javax.swing.JFrame {
         );
         jd_verEstadoVehiculosLayout.setVerticalGroup(
             jd_verEstadoVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         jScrollPane3.setViewportView(jlist_mensajes);
@@ -1981,6 +1987,7 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
+<<<<<<< HEAD
     private void jb_finalizartelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_finalizartelefonoActionPerformed
         String telefono;
         DefaultTableModel model = (DefaultTableModel) jtable_TelefonoCliente.getModel();
@@ -2019,6 +2026,24 @@ public class principal extends javax.swing.JFrame {
         }
         return true;
     }
+=======
+    private void jd_verEstadoVehiculosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_verEstadoVehiculosComponentShown
+        // TODO add your handling code here:
+        DefaultTableModel modelo =(DefaultTableModel)tb_verEstadosCitasCliente.getModel();
+        
+        conection.conectar();
+        try {
+            conection.statement.execute("SELECT (PLACA_DE_CARRO, ESTADO_CITA) FROM CITA where ID_CLIENTE=" + login);
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                Object[] r = {rs.getString(1), rs.getString(2)};
+                modelo.addRow(r);
+            }
+        } catch (Exception e) {
+        }
+        conection.close();
+    }//GEN-LAST:event_jd_verEstadoVehiculosComponentShown
+>>>>>>> 09494b3fa0a6eac62990ecfc40ad80e7680e9066
 
     /**
      * @param args the command line arguments
