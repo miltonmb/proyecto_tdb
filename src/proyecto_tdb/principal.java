@@ -1512,9 +1512,9 @@ public class principal extends javax.swing.JFrame {
     private void bt_registrarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarClienteMouseClicked
         long id_cliente = Long.parseLong(jt_IDClienteRegistro.getText());
         String nombre = jt_PrimerNomClien.getText();
-        String Segnombre = jt_PrimerNomClien.getText();
-        String Apellido = jt_PrimerNomClien.getText();
-        String SegApellido = jt_PrimerNomClien.getText();
+        String Segnombre = jt_SegundoNomClien.getText();
+        String Apellido = jt_PrimerApellClien.getText();
+        String SegApellido = jt_SegundoApellClien.getText();
         String email_Cliente = jt_ClienteEmailRegistro.getText();
         String Direccion = jt_clienteDireccionRegistro.getText();
         String contraseña = jt_ContraCliente.getText();
@@ -1552,6 +1552,15 @@ public class principal extends javax.swing.JFrame {
                 for (int i = 0; i < telefono; i++) {
                     tabla.addRow(new Object[]{" "});
                 }
+                jt_IDClienteRegistro.setText("");
+                jt_PrimerNomClien.setText("");
+                jt_SegundoNomClien.setText("");
+                jt_PrimerApellClien.setText("");
+                jt_SegundoApellClien.setText("");
+                jt_ClienteEmailRegistro.setText("");
+                jt_clienteDireccionRegistro.setText("");
+                jt_ContraCliente.setText("");
+                sp_cantidadTelefonosCliente.setValue(1);
                 this.jd_TelefonosCliente.pack();
                 this.jd_TelefonosCliente.setResizable(false);
                 this.jd_TelefonosCliente.setLocationRelativeTo(this);
@@ -1586,6 +1595,15 @@ public class principal extends javax.swing.JFrame {
                 for (int i = 0; i < telefono; i++) {
                     tabla.addRow(new Object[]{" "});
                 }
+                jt_IDClienteRegistro.setText("");
+                jt_PrimerNomClien.setText("");
+                jt_SegundoNomClien.setText("");
+                jt_PrimerApellClien.setText("");
+                jt_SegundoApellClien.setText("");
+                jt_ClienteEmailRegistro.setText("");
+                jt_clienteDireccionRegistro.setText("");
+                jt_ContraCliente.setText("");
+                sp_cantidadTelefonosCliente.setValue(1);
                 this.jd_TelefonosCliente.pack();
                 this.jd_TelefonosCliente.setResizable(false);
                 this.jd_TelefonosCliente.setLocationRelativeTo(this);
@@ -1622,6 +1640,15 @@ public class principal extends javax.swing.JFrame {
                     tabla.addRow(new Object[]{" "});
                 }
                 jtable_TelefonoCliente.setModel(tabla);
+                jt_IDClienteRegistro.setText("");
+                jt_PrimerNomClien.setText("");
+                jt_SegundoNomClien.setText("");
+                jt_PrimerApellClien.setText("");
+                jt_SegundoApellClien.setText("");
+                jt_ClienteEmailRegistro.setText("");
+                jt_clienteDireccionRegistro.setText("");
+                jt_ContraCliente.setText("");
+                sp_cantidadTelefonosCliente.setValue(1);
                 this.jd_TelefonosCliente.pack();
                 this.jd_TelefonosCliente.setResizable(false);
                 this.jd_TelefonosCliente.setLocationRelativeTo(this);
@@ -1994,16 +2021,16 @@ public class principal extends javax.swing.JFrame {
         if (cb_tipo_addCita.getSelectedItem().toString().equals("MANTENIMIENTO")) {
             try {
                 conection.conectar();
-                String salida = "INSERT INTO TBL_MANTENIMIENTO VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText()+"')";
+                String salida = "INSERT INTO TBL_MANTENIMIENTO VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
                 conection.statement.execute(salida);
                 System.out.println(salida);
                 conection.close();
             } catch (Exception e) {
             }
-        }else{
+        } else {
             try {
                 conection.conectar();
-                String salida = "INSERT INTO TBL_REPARACION VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText()+"')";
+                String salida = "INSERT INTO TBL_REPARACION VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
                 conection.statement.execute(salida);
                 System.out.println(salida);
                 conection.close();
@@ -2015,13 +2042,13 @@ public class principal extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        String bandera="";
+        String bandera = "";
         try {
             conection.conectar();
             conection.statement.execute("SELECT (ID_PERSONA,PRIMERNOMBRE,SEGUNDONOMBRE,PRIMERAPELLIDO,SEGUNDOAPELLIDO) FROM TBL_PERSONA where ID_PERSONA=" + jt_codClienteCita.getText());
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
-                bandera=rs.getString(1);
+                bandera = rs.getString(1);
                 jt_nombreClienteCita.setText(bandera + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4));
             }
             conection.close();
@@ -2105,7 +2132,6 @@ public class principal extends javax.swing.JFrame {
 
     private void jd_verCitasAsignadasComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_verCitasAsignadasComponentShown
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_jd_verCitasAsignadasComponentShown
 
     /**
