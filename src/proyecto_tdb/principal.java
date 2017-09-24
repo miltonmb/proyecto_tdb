@@ -64,6 +64,8 @@ public class principal extends javax.swing.JFrame {
         jt_SegundoApellClien = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jt_ContraCliente = new javax.swing.JTextField();
+        jLabel68 = new javax.swing.JLabel();
+        cb_miembroreg = new javax.swing.JComboBox<>();
         jd_AsesorMecanicoRegistro = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -208,6 +210,29 @@ public class principal extends javax.swing.JFrame {
         jLabel56 = new javax.swing.JLabel();
         tf_NombreasignarMecanigo = new javax.swing.JTextField();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jd_clienteModificar = new javax.swing.JDialog();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jt_IDClienteRegistro1 = new javax.swing.JTextField();
+        jLabel59 = new javax.swing.JLabel();
+        jt_PrimerNomClien1 = new javax.swing.JTextField();
+        jLabel60 = new javax.swing.JLabel();
+        sp_cantidadTelefonosCliente1 = new javax.swing.JSpinner();
+        jLabel61 = new javax.swing.JLabel();
+        jt_clienteDireccionRegistro1 = new javax.swing.JTextField();
+        jLabel62 = new javax.swing.JLabel();
+        jt_ClienteEmailRegistro1 = new javax.swing.JTextField();
+        bt_registrarCliente1 = new javax.swing.JButton();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jt_PrimerApellClien1 = new javax.swing.JTextField();
+        jt_SegundoNomClien1 = new javax.swing.JTextField();
+        jt_SegundoApellClien1 = new javax.swing.JTextField();
+        jLabel66 = new javax.swing.JLabel();
+        jt_ContraCliente1 = new javax.swing.JTextField();
+        jLabel67 = new javax.swing.JLabel();
+        cb_miembromod = new javax.swing.JComboBox<>();
         tf_usuarioLogin = new javax.swing.JTextField();
         pass_contraseñaLogin = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -287,6 +312,10 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel68.setText("Miembro");
+
+        cb_miembroreg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No", " " }));
+
         javax.swing.GroupLayout jd_clienteRegistroLayout = new javax.swing.GroupLayout(jd_clienteRegistro.getContentPane());
         jd_clienteRegistro.getContentPane().setLayout(jd_clienteRegistroLayout);
         jd_clienteRegistroLayout.setHorizontalGroup(
@@ -314,10 +343,16 @@ public class principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(sp_cantidadTelefonosCliente, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jt_ContraCliente, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jt_clienteDireccionRegistro, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jt_ClienteEmailRegistro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))))
+                                    .addGroup(jd_clienteRegistroLayout.createSequentialGroup()
+                                        .addGroup(jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jt_ContraCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jt_clienteDireccionRegistro, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jt_ClienteEmailRegistro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
+                                        .addGap(109, 109, 109)
+                                        .addComponent(jLabel68)
+                                        .addGap(55, 55, 55)
+                                        .addComponent(cb_miembroreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jd_clienteRegistroLayout.createSequentialGroup()
                                 .addComponent(jLabel35)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -379,7 +414,10 @@ public class principal extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jt_clienteDireccionRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jt_clienteDireccionRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel68)
+                                .addComponent(cb_miembroreg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jt_ClienteEmailRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -558,6 +596,11 @@ public class principal extends javax.swing.JFrame {
 
         jmi_hacerCitaCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         jmi_hacerCitaCliente.setText("Hacer una cita");
+        jmi_hacerCitaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_hacerCitaClienteActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmi_hacerCitaCliente);
 
         jmi_borrarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
@@ -903,7 +946,7 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_realizarCita)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         cb_elegirTipoReparacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mantenimiento", "Reparación" }));
@@ -1432,6 +1475,167 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel57.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jLabel57.setText("MODIFICAR DE CLIENTE");
+
+        jLabel58.setText("Identificación:");
+
+        jt_IDClienteRegistro1.setEnabled(false);
+
+        jLabel59.setText("Primer Nombre:");
+
+        jLabel60.setText("N° de Telefonos:");
+
+        sp_cantidadTelefonosCliente1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+
+        jLabel61.setText("Dirección:");
+
+        jLabel62.setText("Email:");
+
+        bt_registrarCliente1.setText("Modificar");
+        bt_registrarCliente1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_registrarCliente1MouseClicked(evt);
+            }
+        });
+        bt_registrarCliente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_registrarCliente1ActionPerformed(evt);
+            }
+        });
+
+        jLabel63.setText("Segundo Nombre:");
+
+        jLabel64.setText("Primer Apellido:");
+
+        jLabel65.setText("Segundo Apellido:");
+
+        jLabel66.setText("Constraseña");
+
+        jt_ContraCliente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_ContraCliente1ActionPerformed(evt);
+            }
+        });
+
+        jLabel67.setText("Miembro");
+
+        cb_miembromod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
+
+        javax.swing.GroupLayout jd_clienteModificarLayout = new javax.swing.GroupLayout(jd_clienteModificar.getContentPane());
+        jd_clienteModificar.getContentPane().setLayout(jd_clienteModificarLayout);
+        jd_clienteModificarLayout.setHorizontalGroup(
+            jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel59)
+                        .addGap(28, 28, 28)
+                        .addComponent(jt_PrimerNomClien1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel63)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 52, Short.MAX_VALUE)
+                        .addComponent(jt_SegundoNomClien1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                                .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel62)
+                                    .addComponent(jLabel61)
+                                    .addComponent(jLabel60)
+                                    .addComponent(jLabel66))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sp_cantidadTelefonosCliente1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                                        .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jt_ContraCliente1, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jt_clienteDireccionRegistro1, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jt_ClienteEmailRegistro1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
+                                        .addGap(105, 105, 105)
+                                        .addComponent(jLabel67)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(cb_miembromod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                                .addComponent(jLabel64)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jt_PrimerApellClien1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel65)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jt_SegundoApellClien1)))))
+                .addContainerGap())
+            .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jLabel58)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jt_IDClienteRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_clienteModificarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_clienteModificarLayout.createSequentialGroup()
+                        .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(279, 279, 279))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_clienteModificarLayout.createSequentialGroup()
+                        .addComponent(bt_registrarCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(368, 368, 368))))
+        );
+        jd_clienteModificarLayout.setVerticalGroup(
+            jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel57)
+                        .addGap(83, 83, 83)
+                        .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_PrimerNomClien1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel63)
+                            .addComponent(jt_SegundoNomClien1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel58)
+                            .addComponent(jt_IDClienteRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel59)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel65)
+                        .addComponent(jt_SegundoApellClien1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jt_PrimerApellClien1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel64)))
+                .addGap(18, 18, 18)
+                .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel62)
+                    .addGroup(jd_clienteModificarLayout.createSequentialGroup()
+                        .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sp_cantidadTelefonosCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel60))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jt_clienteDireccionRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel67)
+                                .addComponent(cb_miembromod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel61))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jt_ClienteEmailRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jd_clienteModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel66)
+                    .addComponent(jt_ContraCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(bt_registrarCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -1537,8 +1741,10 @@ public class principal extends javax.swing.JFrame {
                         if (!datos4.next()) {
                             JOptionPane.showMessageDialog(this, "Usuario no encontrado");
                         } else {
+                            
                             login = id;
                             tipoUser = "Asesor";
+                            jl_nombreMecanico1.setText(datos.getString(2));
                             this.jd_perfilAsesor.pack();
                             this.jd_perfilAsesor.setResizable(false);
                             this.jd_perfilAsesor.setLocationRelativeTo(this);
@@ -1548,6 +1754,7 @@ public class principal extends javax.swing.JFrame {
                     } else {
                         login = id;
                         tipoUser = "Mecánico";
+                        jl_nombreMecanico.setText(datos.getString(2));
                         this.jd_perfilMecanico.pack();
                         this.jd_perfilMecanico.setResizable(false);
                         this.jd_perfilMecanico.setLocationRelativeTo(this);
@@ -1555,6 +1762,7 @@ public class principal extends javax.swing.JFrame {
                         this.hide();
                     }
                 } else {
+                    jl_nombreCliente.setText(datos.getString(2));
                     login = id;
                     tipoUser = "Cliente";
                     this.jd_perfilUsuario.pack();
@@ -1610,6 +1818,7 @@ public class principal extends javax.swing.JFrame {
         String email_Cliente = jt_ClienteEmailRegistro.getText();
         String Direccion = jt_clienteDireccionRegistro.getText();
         String contraseña = jt_ContraCliente.getText();
+        String miembro = cb_miembroreg.getSelectedItem().toString();
         int telefono = (int) sp_cantidadTelefonosCliente.getValue();
         idtemp = id_cliente;
         if (comprabarid(id_cliente)) {
@@ -1629,7 +1838,7 @@ public class principal extends javax.swing.JFrame {
                     stat.setString(7, contraseña);
                     stat.setString(8, Direccion);
                     stat.setString(9, email_Cliente);
-                    stat.setString(10, "-");
+                    stat.setString(10, miembro);
                     stat.setString(11, "-");
                     stat.setInt(12, 1);
                     stat.setInt(13, 0);
@@ -1672,7 +1881,7 @@ public class principal extends javax.swing.JFrame {
                     stat.setString(7, contraseña);
                     stat.setString(8, Direccion);
                     stat.setString(9, email_Cliente);
-                    stat.setString(10, "-");
+                    stat.setString(10, miembro);
                     stat.setString(11, "-");
                     stat.setInt(12, 1);
                     stat.setInt(13, 0);
@@ -1716,7 +1925,7 @@ public class principal extends javax.swing.JFrame {
                     stat.setString(7, contraseña);
                     stat.setString(8, Direccion);
                     stat.setString(9, email_Cliente);
-                    stat.setString(10, "-");
+                    stat.setString(10, miembro);
                     stat.setString(11, "-");
                     stat.setInt(12, 1);
                     stat.setInt(13, 0);
@@ -1882,10 +2091,33 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_registroCarroActionPerformed
 
     private void jmi_modificarPerfilClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_modificarPerfilClienteActionPerformed
-        this.jd_clienteRegistro.pack();
-        this.jd_clienteRegistro.setLocationRelativeTo(this);
-        this.jd_clienteRegistro.setResizable(false);
-        this.jd_clienteRegistro.setVisible(true);
+        try {
+            conection.conectar();
+            PreparedStatement sql = conection.getConnection().prepareStatement("SELECT * FROM TBL_PERSONA WHERE ID_PERSONA=?");
+            sql.setLong(1, login);
+            PreparedStatement sql2 = conection.getConnection().prepareStatement("SELECT * FROM TBL_CLIENTE WHERE ID_CLIENTE=?");
+            sql2.setLong(1, login);
+            ResultSet datos = sql.executeQuery();
+            ResultSet datos2 = sql2.executeQuery();
+            datos.next();
+            datos2.next();
+            jt_IDClienteRegistro1.setText("" + login);
+            jt_PrimerNomClien1.setText(datos.getString(2));
+            jt_SegundoNomClien1.setText(datos.getString(3));
+            jt_PrimerApellClien1.setText(datos.getString(4));
+            jt_SegundoApellClien1.setText(datos.getString(5));
+            jt_ClienteEmailRegistro1.setText(datos2.getString(3));
+            jt_clienteDireccionRegistro1.setText(datos2.getString(2));
+            jt_ContraCliente1.setText(datos.getString(6));
+            sp_cantidadTelefonosCliente.setValue(1);
+            conection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.jd_clienteModificar.pack();
+        this.jd_clienteModificar.setLocationRelativeTo(this);
+        this.jd_clienteModificar.setResizable(false);
+        this.jd_clienteModificar.setVisible(true);
     }//GEN-LAST:event_jmi_modificarPerfilClienteActionPerformed
 
     private void jmi_verEstadosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_verEstadosClienteActionPerformed
@@ -1946,7 +2178,32 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_registroDeCitasActionPerformed
 
     private void jmi_modificarPerfilMecanico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_modificarPerfilMecanico1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            conection.conectar();
+            PreparedStatement sql = conection.getConnection().prepareStatement("SELECT * FROM TBL_PERSONA WHERE ID_PERSONA=?");
+            sql.setLong(1, login);
+            PreparedStatement sql2 = conection.getConnection().prepareStatement("SELECT * FROM TBL_EMPLEADO WHERE ID_EMPLEADO=?");
+            sql2.setLong(1, login);
+            ResultSet datos = sql.executeQuery();
+            ResultSet datos2 = sql2.executeQuery();
+            datos.next();
+            datos2.next();
+            jt_idAModificar.setText(datos.getInt(1) + "");
+            jt_PrimerNomEmplMod.setText(datos.getString(2));
+            jt_SegundoNomEmplMod.setText(datos.getString(3));
+            jt_PrimerApellEmplMod.setText(datos.getString(4));
+            jt_SegundoApellEmplMod.setText(datos.getString(5));
+            jt_AMmod.setText(datos.getString(6));
+            jt_tipoAMmod.setText(tipoUser);
+            jt_telefonoAMod.setText(datos2.getString(2));
+            conection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.jd_AsesorMecanicoModificar.pack();
+        this.jd_AsesorMecanicoModificar.setLocationRelativeTo(this);
+        this.jd_AsesorMecanicoModificar.setResizable(false);
+        this.jd_AsesorMecanicoModificar.setVisible(true);
     }//GEN-LAST:event_jmi_modificarPerfilMecanico1ActionPerformed
 
     private void jmi_citasAsignadas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_citasAsignadas1ActionPerformed
@@ -1957,7 +2214,10 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_citasAsignadas1ActionPerformed
 
     private void jmi_registroDeCitas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registroDeCitas1ActionPerformed
-        // TODO add your handling code here:
+        this.jd_registroDeCitas.pack();
+        this.jd_registroDeCitas.setLocationRelativeTo(this);
+        this.jd_registroDeCitas.setResizable(false);
+        this.jd_registroDeCitas.setVisible(true);
     }//GEN-LAST:event_jmi_registroDeCitas1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -1997,7 +2257,20 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_ContraClienteActionPerformed
 
     private void jmi_borrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_borrarClienteActionPerformed
-        // TODO add your handling code here:
+        try {
+            conection.conectar();
+            CallableStatement stat = conection.getConnection().prepareCall("CALL DELETEUSER(?)");
+            stat.setLong(1, login);
+            stat.execute();
+            conection.close();
+            JOptionPane.showMessageDialog(this, "Se elimino usuario , se cerrara sesion");
+            login = 0;
+            tipoUser = "";
+            jd_perfilUsuario.setVisible(false);
+            this.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jmi_borrarClienteActionPerformed
 
     private void jm_AsignarMecanicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_AsignarMecanicosActionPerformed
@@ -2026,7 +2299,8 @@ public class principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Se elimino usuario , se cerrara sesion");
             login = 0;
             tipoUser = "";
-
+            jd_perfilAsesor.setVisible(false);
+            this.show();
         } catch (SQLException ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2041,6 +2315,10 @@ public class principal extends javax.swing.JFrame {
             stat.execute();
             conection.close();
             JOptionPane.showMessageDialog(this, "Se elimino usuario , se cerrara sesion");
+            login = 0;
+            tipoUser = "";
+            jd_perfilMecanico.setVisible(false);
+            this.show();
         } catch (SQLException ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2284,33 +2562,100 @@ public class principal extends javax.swing.JFrame {
 
     private void cb_asignarMecanigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_asignarMecanigoActionPerformed
         // TODO add your handling code here:
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel)cb_asignarMecanigo.getModel();
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_asignarMecanigo.getModel();
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (PRIMERNOMBRE, PRIMERAPELLIDO) FROM TBL_PERSONA WHERE ID_PERSONA ="+cb_asignarMecanigo.getSelectedItem().toString());
+            conection.statement.execute("SELECT (PRIMERNOMBRE, PRIMERAPELLIDO) FROM TBL_PERSONA WHERE ID_PERSONA =" + cb_asignarMecanigo.getSelectedItem().toString());
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
-                tf_NombreasignarMecanigo.setText(rs.getString(1)+" "+rs.getString(2));
+                tf_NombreasignarMecanigo.setText(rs.getString(1) + " " + rs.getString(2));
             }
             conection.close();
         } catch (Exception e) {
         }
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (ID_ASESOR) FROM TBL_MECANICO WHERE ID_MECANICO ="+cb_asignarMecanigo.getSelectedItem().toString());
+            conection.statement.execute("SELECT (ID_ASESOR) FROM TBL_MECANICO WHERE ID_MECANICO =" + cb_asignarMecanigo.getSelectedItem().toString());
             ResultSet rs = conection.statement.getResultSet();
-            boolean bandera=false;
+            boolean bandera = false;
             while (rs.next()) {
-                if (rs.getInt(1)==(int)login) {
-                    bandera=true;
+                if (rs.getInt(1) == (int) login) {
+                    bandera = true;
                 }
             }
             conection.close();
             rb_SIasignarMecanigo.setSelected(bandera);
         } catch (Exception e) {
         }
-        
+
     }//GEN-LAST:event_cb_asignarMecanigoActionPerformed
+
+    private void bt_registrarCliente1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarCliente1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_registrarCliente1MouseClicked
+
+    private void bt_registrarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_registrarCliente1ActionPerformed
+        long id_cliente = Long.parseLong(jt_IDClienteRegistro1.getText());
+        String nombre = jt_PrimerNomClien1.getText();
+        String Segnombre = jt_SegundoNomClien1.getText();
+        String Apellido = jt_PrimerApellClien1.getText();
+        String SegApellido = jt_SegundoApellClien1.getText();
+        String email_Cliente = jt_ClienteEmailRegistro1.getText();
+        String Direccion = jt_clienteDireccionRegistro1.getText();
+        String contraseña = jt_ContraCliente1.getText();
+        int telefono = (int) sp_cantidadTelefonosCliente1.getValue();
+        String miembro = cb_miembromod.getSelectedItem().toString();
+        idtemp = id_cliente;
+        Segnombre = "-";
+        try {
+            conection.conectar();
+            CallableStatement stat = conection.getConnection().prepareCall("{CALL UPDATEUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            stat.setString(1, "1");
+            stat.setLong(2, id_cliente);
+            stat.setString(3, nombre);
+            stat.setString(4, Segnombre);
+            stat.setString(5, Apellido);
+            stat.setString(6, SegApellido);
+            stat.setString(7, contraseña);
+            stat.setString(8, Direccion);
+            stat.setString(9, email_Cliente);
+            stat.setString(10, miembro);
+            stat.setString(11, "-");
+            stat.setInt(12, 1);
+            stat.setInt(13, 0);
+            stat.executeUpdate();
+            stat.close();
+            conection.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultTableModel tabla = (DefaultTableModel) jtable_TelefonoCliente.getModel();
+        for (int i = 0; i < telefono; i++) {
+            tabla.addRow(new Object[]{" "});
+        }
+        jt_IDClienteRegistro1.setText("");
+        jt_PrimerNomClien1.setText("");
+        jt_SegundoNomClien1.setText("");
+        jt_PrimerApellClien1.setText("");
+        jt_SegundoApellClien1.setText("");
+        jt_ClienteEmailRegistro1.setText("");
+        jt_clienteDireccionRegistro1.setText("");
+        jt_ContraCliente1.setText("");
+        sp_cantidadTelefonosCliente.setValue(1);
+    }//GEN-LAST:event_bt_registrarCliente1ActionPerformed
+
+    private void jt_ContraCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_ContraCliente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_ContraCliente1ActionPerformed
+
+    private void jmi_hacerCitaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_hacerCitaClienteActionPerformed
+        
+        this.jd_registroDeCitas.pack();
+        this.jd_registroDeCitas.setLocationRelativeTo(this);
+        this.jd_registroDeCitas.setResizable(false);
+        this.jd_registroDeCitas.setVisible(true);
+    }//GEN-LAST:event_jmi_hacerCitaClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2353,6 +2698,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_elegir;
     private javax.swing.JButton bt_login;
     private javax.swing.JButton bt_registrarCliente;
+    private javax.swing.JButton bt_registrarCliente1;
     private javax.swing.JButton bt_verEstadoCita;
     private javax.swing.JButton btn_realizarCita;
     private javax.swing.JButton btn_registrarAuto;
@@ -2364,6 +2710,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_elegirTipoReparacion;
     private javax.swing.JComboBox<String> cb_elegirUsuario;
     private javax.swing.JComboBox<String> cb_horaIngresa;
+    private javax.swing.JComboBox<String> cb_miembromod;
+    private javax.swing.JComboBox<String> cb_miembroreg;
     private javax.swing.JComboBox<String> cb_telefono_addCita;
     private javax.swing.JComboBox<String> cb_tipo_addCita;
     private javax.swing.JButton jButton1;
@@ -2420,7 +2768,19 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2444,6 +2804,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_AsesorMecanicoRegistro;
     private javax.swing.JDialog jd_TelefonosCliente;
     private javax.swing.JDialog jd_asignarMecanicos;
+    private javax.swing.JDialog jd_clienteModificar;
     private javax.swing.JDialog jd_clienteRegistro;
     private javax.swing.JDialog jd_elegirTipo;
     private javax.swing.JDialog jd_hacerCita;
@@ -2481,21 +2842,29 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField jt_AMContra;
     private javax.swing.JTextField jt_AMmod;
     private javax.swing.JTextField jt_ClienteEmailRegistro;
+    private javax.swing.JTextField jt_ClienteEmailRegistro1;
     private javax.swing.JTextField jt_ContraCliente;
+    private javax.swing.JTextField jt_ContraCliente1;
     private javax.swing.JTextField jt_IDClienteRegistro;
+    private javax.swing.JTextField jt_IDClienteRegistro1;
     private javax.swing.JTextField jt_PrimerApellClien;
+    private javax.swing.JTextField jt_PrimerApellClien1;
     private javax.swing.JTextField jt_PrimerApellEmpl;
     private javax.swing.JTextField jt_PrimerApellEmplMod;
     private javax.swing.JTextField jt_PrimerNomClien;
+    private javax.swing.JTextField jt_PrimerNomClien1;
     private javax.swing.JTextField jt_PrimerNomEmpl;
     private javax.swing.JTextField jt_PrimerNomEmplMod;
     private javax.swing.JTextField jt_SegundoApellClien;
+    private javax.swing.JTextField jt_SegundoApellClien1;
     private javax.swing.JTextField jt_SegundoApellEmpl;
     private javax.swing.JTextField jt_SegundoApellEmplMod;
     private javax.swing.JTextField jt_SegundoNomClien;
+    private javax.swing.JTextField jt_SegundoNomClien1;
     private javax.swing.JTextField jt_SegundoNomEmpl;
     private javax.swing.JTextField jt_SegundoNomEmplMod;
     private javax.swing.JTextField jt_clienteDireccionRegistro;
+    private javax.swing.JTextField jt_clienteDireccionRegistro1;
     private javax.swing.JTextField jt_codCitaHacer;
     private javax.swing.JTextField jt_codCitaTaller;
     private javax.swing.JTextField jt_codClienteCita;
@@ -2515,6 +2884,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_NOasignarMecanigo;
     private javax.swing.JRadioButton rb_SIasignarMecanigo;
     private javax.swing.JSpinner sp_cantidadTelefonosCliente;
+    private javax.swing.JSpinner sp_cantidadTelefonosCliente1;
     private javax.swing.JTextArea ta_descripcionReparacion;
     private javax.swing.JTextArea ta_descripcion_addCita;
     private javax.swing.JTextArea ta_mensajes;
