@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -172,6 +173,7 @@ public class principal extends javax.swing.JFrame {
         jd_TelefonosCliente = new javax.swing.JDialog();
         jScrollPane7 = new javax.swing.JScrollPane();
         jtable_TelefonoCliente = new javax.swing.JTable();
+        jb_finalizartelefono = new javax.swing.JButton();
         jd_AsesorMecanicoModificar = new javax.swing.JDialog();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
@@ -1141,15 +1143,32 @@ public class principal extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(jtable_TelefonoCliente);
 
+        jb_finalizartelefono.setText("Finalizar");
+        jb_finalizartelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_finalizartelefonoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_TelefonosClienteLayout = new javax.swing.GroupLayout(jd_TelefonosCliente.getContentPane());
         jd_TelefonosCliente.getContentPane().setLayout(jd_TelefonosClienteLayout);
         jd_TelefonosClienteLayout.setHorizontalGroup(
             jd_TelefonosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
+            .addGroup(jd_TelefonosClienteLayout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jd_TelefonosClienteLayout.createSequentialGroup()
+                .addGap(264, 264, 264)
+                .addComponent(jb_finalizartelefono)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_TelefonosClienteLayout.setVerticalGroup(
             jd_TelefonosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+            .addGroup(jd_TelefonosClienteLayout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jb_finalizartelefono)
+                .addContainerGap())
         );
 
         jLabel42.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
@@ -1455,85 +1474,117 @@ public class principal extends javax.swing.JFrame {
         String email_Cliente = jt_ClienteEmailRegistro.getText();
         String Direccion = jt_clienteDireccionRegistro.getText();
         String contraseña = jt_ContraCliente.getText();
-        if (Segnombre == null) {
-            Segnombre = "-";
-            try {
-                conection.conectar();
-                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-                stat.setString(1, "1");
-                stat.setLong(2, id_cliente);
-                stat.setString(3, nombre);
-                stat.setString(4, Segnombre);
-                stat.setString(5, Apellido);
-                stat.setString(6, SegApellido);
-                stat.setString(7, contraseña);
-                stat.setString(8, Direccion);
-                stat.setString(9, email_Cliente);
-                stat.setString(10, "-");
-                stat.setString(11, "-");
-                stat.setInt(12, 1);
-                stat.setInt(13, 0);
-                stat.executeUpdate();
-                stat.close();
-                conection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else if (SegApellido == null) {
-            SegApellido = "-";
-            try {
-                conection.conectar();
-                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-                stat.setString(1, "1");
-                stat.setLong(2, id_cliente);
-                stat.setString(3, nombre);
-                stat.setString(4, Segnombre);
-                stat.setString(5, Apellido);
-                stat.setString(6, SegApellido);
-                stat.setString(7, contraseña);
-                stat.setString(8, Direccion);
-                stat.setString(9, email_Cliente);
-                stat.setString(10, "-");
-                stat.setString(11, "-");
-                stat.setInt(12, 1);
-                stat.setInt(13, 0);
-                stat.executeUpdate();
-                stat.close();
-                conection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else if (contraseña == null || Direccion == null || id_cliente == 0) {
-            JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Un campo esta incompleto o no es valido");
-        } else {
-            try {
-                conection.conectar();
-                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-                stat.setString(1, "1");
-                stat.setLong(2, id_cliente);
-                stat.setString(3, nombre);
-                stat.setString(4, Segnombre);
-                stat.setString(5, Apellido);
-                stat.setString(6, SegApellido);
-                stat.setString(7, contraseña);
-                stat.setString(8, Direccion);
-                stat.setString(9, email_Cliente);
-                stat.setString(10, "-");
-                stat.setString(11, "-");
-                stat.setInt(12, 1);
-                stat.setInt(13, 0);
-                stat.executeUpdate();
-                stat.close();
-                conection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        int telefono = (int) sp_cantidadTelefonosCliente.getValue();
+        idtemp = id_cliente;
+        if (comprabarid(id_cliente)) {
+            JOptionPane.showMessageDialog(jd_clienteRegistro, "El id ya existe");
+        }else{
+            if (Segnombre == null) {
+                Segnombre = "-";
+                try {
+                    conection.conectar();
+                    CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                    stat.setString(1, "1");
+                    stat.setLong(2, id_cliente);
+                    stat.setString(3, nombre);
+                    stat.setString(4, Segnombre);
+                    stat.setString(5, Apellido);
+                    stat.setString(6, SegApellido);
+                    stat.setString(7, contraseña);
+                    stat.setString(8, Direccion);
+                    stat.setString(9, email_Cliente);
+                    stat.setString(10, "-");
+                    stat.setString(11, "-");
+                    stat.setInt(12, 1);
+                    stat.setInt(13, 0);
+                    stat.executeUpdate();
+                    stat.close();
+                    conection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                DefaultTableModel tabla = (DefaultTableModel) jtable_TelefonoCliente.getModel();
+                for (int i = 0; i < telefono; i++) {
+                    tabla.addRow(new Object[]{" "});
+                }
+                this.jd_TelefonosCliente.pack();
+                this.jd_TelefonosCliente.setResizable(false);
+                this.jd_TelefonosCliente.setLocationRelativeTo(this);
+                this.jd_TelefonosCliente.setVisible(true);
+                this.jd_clienteRegistro.hide();
+            } else if (SegApellido == null) {
+                SegApellido = "-";
+                try {
+                    conection.conectar();
+                    CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                    stat.setString(1, "1");
+                    stat.setLong(2, id_cliente);
+                    stat.setString(3, nombre);
+                    stat.setString(4, Segnombre);
+                    stat.setString(5, Apellido);
+                    stat.setString(6, SegApellido);
+                    stat.setString(7, contraseña);
+                    stat.setString(8, Direccion);
+                    stat.setString(9, email_Cliente);
+                    stat.setString(10, "-");
+                    stat.setString(11, "-");
+                    stat.setInt(12, 1);
+                    stat.setInt(13, 0);
+                    stat.executeUpdate();
+                    stat.close();
+                    conection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                DefaultTableModel tabla = (DefaultTableModel) jtable_TelefonoCliente.getModel();
+                for (int i = 0; i < telefono; i++) {
+                    tabla.addRow(new Object[]{" "});
+                }
+                this.jd_TelefonosCliente.pack();
+                this.jd_TelefonosCliente.setResizable(false);
+                this.jd_TelefonosCliente.setLocationRelativeTo(this);
+                this.jd_TelefonosCliente.setVisible(true);
+                this.jd_clienteRegistro.hide();
+            } else if (contraseña == null || Direccion == null || id_cliente == 0) {
+                JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Un campo esta incompleto o no es valido");
+            } else {
+                try {
+                    conection.conectar();
+                    CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                    stat.setString(1, "1");
+                    stat.setLong(2, id_cliente);
+                    stat.setString(3, nombre);
+                    stat.setString(4, Segnombre);
+                    stat.setString(5, Apellido);
+                    stat.setString(6, SegApellido);
+                    stat.setString(7, contraseña);
+                    stat.setString(8, Direccion);
+                    stat.setString(9, email_Cliente);
+                    stat.setString(10, "-");
+                    stat.setString(11, "-");
+                    stat.setInt(12, 1);
+                    stat.setInt(13, 0);
+                    stat.executeUpdate();
+                    stat.close();
+                    conection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                DefaultTableModel tabla = (DefaultTableModel) jtable_TelefonoCliente.getModel();
+                for (int i = 0; i < telefono; i++) {
+                    tabla.addRow(new Object[]{" "});
+                }
+                jtable_TelefonoCliente.setModel(tabla);
+                this.jd_TelefonosCliente.pack();
+                this.jd_TelefonosCliente.setResizable(false);
+                this.jd_TelefonosCliente.setLocationRelativeTo(this);
+                this.jd_TelefonosCliente.setVisible(true);
+                this.jd_clienteRegistro.hide();
             }
         }
-        this.jd_clienteRegistro.setVisible(false);
-        this.show();
     }//GEN-LAST:event_bt_registrarClienteMouseClicked
 
     private void jb_RegistrarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegistrarEmpleadoMouseClicked
@@ -1546,88 +1597,102 @@ public class principal extends javax.swing.JFrame {
         String tipo = jt_tipoAMRegistro.getText();
         String telefono = jt_telefonoAMRegistro.getText();
         int taller = 1;
-        if (tipo == "Mecánico") {
-            tipo = "3";
-        } else {
-            tipo = "2";
+        if (comprabarid(id)) {
+            JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Ya existe ese id");
+            jt_idAMRegistro.setText("");
+        }else{
+            
+            if (tipo == "Mecánico") {
+                tipo = "3";
+            } else {
+                tipo = "2";
+            }
+            if (Segnombre == null) {
+                try {
+                    conection.conectar();
+                    CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                    stat.setString(1, tipo);
+                    stat.setLong(2, id);
+                    stat.setString(3, nombre);
+                    stat.setString(4, "-");
+                    stat.setString(5, Apellido);
+                    stat.setString(6, SegApellido);
+                    stat.setString(7, contraseña);
+                    stat.setString(8, "-");
+                    stat.setString(9, "-");
+                    stat.setString(10, "-");
+                    stat.setString(11, telefono);
+                    stat.setInt(12, taller);
+                    stat.setInt(13, 0);
+                    stat.executeUpdate();
+                    stat.close();
+                    conection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (SegApellido == null) {
+                try {
+                    conection.conectar();
+                    CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                    stat.setString(1, tipo);
+                    stat.setLong(2, id);
+                    stat.setString(3, nombre);
+                    stat.setString(4, Segnombre);
+                    stat.setString(5, Apellido);
+                    stat.setString(6, "-");
+                    stat.setString(7, contraseña);
+                    stat.setString(8, "-");
+                    stat.setString(9, "-");
+                    stat.setString(10, "-");
+                    stat.setString(11, telefono);
+                    stat.setInt(12, taller);
+                    stat.setInt(13, 0);
+                    stat.executeUpdate();
+                    stat.close();
+                    conection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (contraseña == null || telefono == null || id == 0) {
+                JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Un campo esta incompleto o no es valido");
+            } else {
+                try {
+                    conection.conectar();
+                    CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                    stat.setString(1, tipo);
+                    stat.setLong(2, id);
+                    stat.setString(3, nombre);
+                    stat.setString(4, Segnombre);
+                    stat.setString(5, Apellido);
+                    stat.setString(6, SegApellido);
+                    stat.setString(7, contraseña);
+                    stat.setString(8, "-");
+                    stat.setString(9, "-");
+                    stat.setString(10, "-");
+                    stat.setString(11, telefono);
+                    stat.setInt(12, taller);
+                    stat.setInt(13, 0);
+                    stat.executeUpdate();
+                    stat.close();
+                    conection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            jt_idAMRegistro.setText("");
+            jt_PrimerNomEmpl.setText("");
+            jt_SegundoNomEmpl.setText("");
+            jt_PrimerApellEmpl.setText("");
+            jt_SegundoApellEmpl.setText("");
+            jt_AMContra.setText("");
+            jt_tipoAMRegistro.setText("");
+            jt_telefonoAMRegistro.setText("");
+            this.jd_AsesorMecanicoRegistro.setVisible(false);
+            this.show();
         }
-        if (Segnombre == null) {
-            try {
-                conection.conectar();
-                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-                stat.setString(1, tipo);
-                stat.setLong(2, id);
-                stat.setString(3, nombre);
-                stat.setString(4, "-");
-                stat.setString(5, Apellido);
-                stat.setString(6, SegApellido);
-                stat.setString(7, contraseña);
-                stat.setString(8, "-");
-                stat.setString(9, "-");
-                stat.setString(10, "-");
-                stat.setString(11, telefono);
-                stat.setInt(12, taller);
-                stat.setInt(13, 0);
-                stat.executeUpdate();
-                stat.close();
-                conection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else if (SegApellido == null) {
-            try {
-                conection.conectar();
-                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-                stat.setString(1, tipo);
-                stat.setLong(2, id);
-                stat.setString(3, nombre);
-                stat.setString(4, Segnombre);
-                stat.setString(5, Apellido);
-                stat.setString(6, "-");
-                stat.setString(7, contraseña);
-                stat.setString(8, "-");
-                stat.setString(9, "-");
-                stat.setString(10, "-");
-                stat.setString(11, telefono);
-                stat.setInt(12, taller);
-                stat.setInt(13, 0);
-                stat.executeUpdate();
-                stat.close();
-                conection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else if (contraseña == null || telefono == null || id == 0) {
-            JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Un campo esta incompleto o no es valido");
-        } else {
-            try {
-                conection.conectar();
-                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-                stat.setString(1, tipo);
-                stat.setLong(2, id);
-                stat.setString(3, nombre);
-                stat.setString(4, Segnombre);
-                stat.setString(5, Apellido);
-                stat.setString(6, SegApellido);
-                stat.setString(7, contraseña);
-                stat.setString(8, "-");
-                stat.setString(9, "-");
-                stat.setString(10, "-");
-                stat.setString(11, telefono);
-                stat.setInt(12, taller);
-                stat.setInt(13, 0);
-                stat.executeUpdate();
-                stat.close();
-                conection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        this.jd_AsesorMecanicoRegistro.setVisible(false);
-        this.show();
     }//GEN-LAST:event_jb_RegistrarEmpleadoMouseClicked
 
     private void jl_registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_registrarMouseClicked
@@ -1744,11 +1809,16 @@ public class principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jd_registroAuto, "Campos no validos");
         } else {
             try {
+                conection.conectar();
                 PreparedStatement sql = conection.getConnection().prepareStatement("INSERT INTO TBL_AUTOMOVIL VALUES(?,?,?,?)");
                 sql.setString(1, placa);
                 sql.setString(2, modelo);
                 sql.setString(3, NumMotor);
-
+                sql.execute();
+                conection.close();
+                JOptionPane.showMessageDialog(jd_registroAuto, "Auto Registrado");
+                jd_registroAuto.setVisible(false);
+                jd_perfilUsuario.setVisible(true);
             } catch (SQLException ex) {
                 Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1787,6 +1857,9 @@ public class principal extends javax.swing.JFrame {
             stat.execute();
             conection.close();
             JOptionPane.showMessageDialog(this, "Se elimino usuario , se cerrara sesion");
+            login = 0;
+            tipoUser = "";
+
         } catch (SQLException ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1845,6 +1918,14 @@ public class principal extends javax.swing.JFrame {
             stat.close();
             conection.close();
             JOptionPane.showMessageDialog(jd_AsesorMecanicoModificar, "Se modifico con exito");
+            jt_idAModificar.setText("");
+            jt_PrimerNomEmplMod.setText("");
+            jt_SegundoNomEmplMod.setText("");
+            jt_PrimerApellEmplMod.setText("");
+            jt_SegundoApellEmplMod.setText("");
+            jt_AMmod.setText("");
+            jt_tipoAMmod.setText("");
+            jt_telefonoAMod.setText("");
         } catch (SQLException ex) {
             ex.printStackTrace();
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -1899,6 +1980,45 @@ public class principal extends javax.swing.JFrame {
             cb_telefono_addCita.setModel(modelo);
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jb_finalizartelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_finalizartelefonoActionPerformed
+        String telefono;
+        DefaultTableModel model = (DefaultTableModel) jtable_TelefonoCliente.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            telefono = model.getValueAt(i, 0).toString();
+            try {
+                conection.conectar();
+                PreparedStatement sql = conection.getConnection().prepareStatement("INSERT INTO TELEFONO_CLIENTE VALUES(?,?)");
+                sql.setLong(1, idtemp);
+                sql.setString(2, telefono);
+                sql.execute();
+                conection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        JOptionPane.showMessageDialog(jd_TelefonosCliente, "Se creo el cliente correctamente");
+        jd_TelefonosCliente.setVisible(false);
+        this.show();
+    }//GEN-LAST:event_jb_finalizartelefonoActionPerformed
+    boolean comprabarid(long id) {
+        try {
+            conection.conectar();
+            PreparedStatement sql = conection.getConnection().prepareStatement("SELECT * FROM TBL_PERSONA WHERE ID_PERSONA=?");
+            sql.setLong(1, id);
+            ResultSet datos = sql.executeQuery();
+            if (datos.next()) {
+                conection.close();
+                return true;
+            } else {
+                conection.close();
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
 
     /**
      * @param args the command line arguments
@@ -2017,6 +2137,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JButton jb_RegistrarEmpleado;
     private javax.swing.JButton jb_RegistrarEmpleado1;
+    private javax.swing.JButton jb_finalizartelefono;
     private javax.swing.JDialog jd_AsesorMecanicoModificar;
     private javax.swing.JDialog jd_AsesorMecanicoRegistro;
     private javax.swing.JDialog jd_TelefonosCliente;
@@ -2099,4 +2220,5 @@ public class principal extends javax.swing.JFrame {
     BD conection = new BD();
     long login;
     String tipoUser;
+    long idtemp;
 }
