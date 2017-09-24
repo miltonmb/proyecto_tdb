@@ -1447,7 +1447,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_elegirMouseClicked
 
     private void bt_registrarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarClienteMouseClicked
-        int id_cliente = Integer.parseInt(jt_IDClienteRegistro.getText());
+        long id_cliente = Long.parseLong(jt_IDClienteRegistro.getText());
         String nombre = jt_PrimerNomClien.getText();
         String Segnombre = jt_PrimerNomClien.getText();
         String Apellido = jt_PrimerNomClien.getText();
@@ -1457,12 +1457,80 @@ public class principal extends javax.swing.JFrame {
         String contraseña = jt_ContraCliente.getText();
         if (Segnombre == null) {
             Segnombre = "-";
+            try {
+                conection.conectar();
+                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                stat.setString(1, "1");
+                stat.setLong(2, id_cliente);
+                stat.setString(3, nombre);
+                stat.setString(4, Segnombre);
+                stat.setString(5, Apellido);
+                stat.setString(6, SegApellido);
+                stat.setString(7, contraseña);
+                stat.setString(8, Direccion);
+                stat.setString(9, email_Cliente);
+                stat.setString(10, "-");
+                stat.setString(11, "-");
+                stat.setInt(12, 1);
+                stat.setInt(13, 0);
+                stat.executeUpdate();
+                stat.close();
+                conection.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (SegApellido == null) {
             SegApellido = "-";
+            try {
+                conection.conectar();
+                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                stat.setString(1, "1");
+                stat.setLong(2, id_cliente);
+                stat.setString(3, nombre);
+                stat.setString(4, Segnombre);
+                stat.setString(5, Apellido);
+                stat.setString(6, SegApellido);
+                stat.setString(7, contraseña);
+                stat.setString(8, Direccion);
+                stat.setString(9, email_Cliente);
+                stat.setString(10, "-");
+                stat.setString(11, "-");
+                stat.setInt(12, 1);
+                stat.setInt(13, 0);
+                stat.executeUpdate();
+                stat.close();
+                conection.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (contraseña == null || Direccion == null || id_cliente == 0) {
             JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Un campo esta incompleto o no es valido");
         } else {
-
+            try {
+                conection.conectar();
+                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                stat.setString(1, "1");
+                stat.setLong(2, id_cliente);
+                stat.setString(3, nombre);
+                stat.setString(4, Segnombre);
+                stat.setString(5, Apellido);
+                stat.setString(6, SegApellido);
+                stat.setString(7, contraseña);
+                stat.setString(8, Direccion);
+                stat.setString(9, email_Cliente);
+                stat.setString(10, "-");
+                stat.setString(11, "-");
+                stat.setInt(12, 1);
+                stat.setInt(13, 0);
+                stat.executeUpdate();
+                stat.close();
+                conection.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         this.jd_clienteRegistro.setVisible(false);
         this.show();
@@ -1473,7 +1541,7 @@ public class principal extends javax.swing.JFrame {
         String Segnombre = jt_SegundoNomEmpl.getText();
         String Apellido = jt_PrimerApellEmpl.getText();
         String SegApellido = jt_SegundoNomEmpl.getText();
-        int id = Integer.parseInt(jt_idAMRegistro.getText());
+        long id = Long.parseLong(jt_idAMRegistro.getText());
         String contraseña = jt_AMContra.getText();
         String tipo = jt_tipoAMRegistro.getText();
         String telefono = jt_telefonoAMRegistro.getText();
@@ -1488,7 +1556,7 @@ public class principal extends javax.swing.JFrame {
                 conection.conectar();
                 CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
                 stat.setString(1, tipo);
-                stat.setInt(2, id);
+                stat.setLong(2, id);
                 stat.setString(3, nombre);
                 stat.setString(4, "-");
                 stat.setString(5, Apellido);
@@ -1512,7 +1580,7 @@ public class principal extends javax.swing.JFrame {
                 conection.conectar();
                 CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
                 stat.setString(1, tipo);
-                stat.setInt(2, id);
+                stat.setLong(2, id);
                 stat.setString(3, nombre);
                 stat.setString(4, Segnombre);
                 stat.setString(5, Apellido);
@@ -1538,7 +1606,7 @@ public class principal extends javax.swing.JFrame {
                 conection.conectar();
                 CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
                 stat.setString(1, tipo);
-                stat.setInt(2, id);
+                stat.setLong(2, id);
                 stat.setString(3, nombre);
                 stat.setString(4, Segnombre);
                 stat.setString(5, Apellido);
@@ -1802,7 +1870,7 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         conection.conectar();
         try {
             conection.statement.execute("SELECT (ID_PERSONA,PRIMERNOMBRE,SEGUNDONOMBRE,PRIMERAPELLIDO,SEGUNDOAPELLIDO) FROM TBL_PERSONA where ID_PERSONA=" + jt_codClienteCita.getText());
@@ -1819,7 +1887,7 @@ public class principal extends javax.swing.JFrame {
         } else {
             conection.conectar();
             try {
-                
+
                 conection.statement.execute("SELECT (TELEFONO) FROM TELEFONO_CLIENTE where ID_CLIENTE=" + jt_codClienteCita.getText());
                 ResultSet rs = conection.statement.getResultSet();
                 while (rs.next()) {
