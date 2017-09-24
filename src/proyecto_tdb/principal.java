@@ -8,6 +8,7 @@ package proyecto_tdb;
 import java.awt.Color;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -167,6 +168,25 @@ public class principal extends javax.swing.JFrame {
         jd_TelefonosCliente = new javax.swing.JDialog();
         jScrollPane7 = new javax.swing.JScrollPane();
         jtable_TelefonoCliente = new javax.swing.JTable();
+        jd_AsesorMecanicoModificar = new javax.swing.JDialog();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jt_tipoAMmod = new javax.swing.JTextField();
+        jt_idAModificar = new javax.swing.JTextField();
+        jb_RegistrarEmpleado1 = new javax.swing.JButton();
+        jLabel45 = new javax.swing.JLabel();
+        jt_telefonoAMod = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        jt_AMmod = new javax.swing.JTextField();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jt_PrimerNomEmplMod = new javax.swing.JTextField();
+        jt_PrimerApellEmplMod = new javax.swing.JTextField();
+        jt_SegundoNomEmplMod = new javax.swing.JTextField();
+        jt_SegundoApellEmplMod = new javax.swing.JTextField();
         tf_usuarioLogin = new javax.swing.JTextField();
         pass_contraseñaLogin = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -592,6 +612,11 @@ public class principal extends javax.swing.JFrame {
         jMenu2.add(jmi_modificarPerfilMecanico);
 
         jmi_eliminarPerfilMecanico.setText("Eliminar mi perfil");
+        jmi_eliminarPerfilMecanico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarPerfilMecanicoActionPerformed(evt);
+            }
+        });
         jMenu2.add(jmi_eliminarPerfilMecanico);
 
         jMenuBar2.add(jMenu2);
@@ -1029,6 +1054,11 @@ public class principal extends javax.swing.JFrame {
         jMenu3.add(jmi_modificarPerfilMecanico1);
 
         jmi_eliminarPerfilMecanico1.setText("Eliminar mi perfil");
+        jmi_eliminarPerfilMecanico1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarPerfilMecanico1ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jmi_eliminarPerfilMecanico1);
 
         jm_AsignarMecanicos.setText("Asignar Mecanicos");
@@ -1097,6 +1127,129 @@ public class principal extends javax.swing.JFrame {
         jd_TelefonosClienteLayout.setVerticalGroup(
             jd_TelefonosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+        );
+
+        jLabel42.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
+        jLabel42.setText("MODIFICAR DE MECANICO-ASESOR");
+
+        jLabel43.setText("Tipo:");
+
+        jLabel44.setText("Identificación:");
+
+        jt_tipoAMmod.setEditable(false);
+        jt_tipoAMmod.setEnabled(false);
+
+        jb_RegistrarEmpleado1.setText("Completar");
+        jb_RegistrarEmpleado1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_RegistrarEmpleado1MouseClicked(evt);
+            }
+        });
+        jb_RegistrarEmpleado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_RegistrarEmpleado1ActionPerformed(evt);
+            }
+        });
+
+        jLabel45.setText("N° de Telefono:");
+
+        jLabel46.setText("Contraseña");
+
+        jLabel47.setText("Segundo Nombre:");
+
+        jLabel48.setText("Primer Apellido:");
+
+        jLabel49.setText("Primer Nombre:");
+
+        jLabel50.setText("Segundo Apellido:");
+
+        javax.swing.GroupLayout jd_AsesorMecanicoModificarLayout = new javax.swing.GroupLayout(jd_AsesorMecanicoModificar.getContentPane());
+        jd_AsesorMecanicoModificar.getContentPane().setLayout(jd_AsesorMecanicoModificarLayout);
+        jd_AsesorMecanicoModificarLayout.setHorizontalGroup(
+            jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AsesorMecanicoModificarLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jd_AsesorMecanicoModificarLayout.createSequentialGroup()
+                        .addComponent(jLabel49)
+                        .addGap(18, 18, 18)
+                        .addComponent(jt_PrimerNomEmplMod, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel47)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jt_SegundoNomEmplMod, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_AsesorMecanicoModificarLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel48)
+                        .addGap(18, 18, 18)
+                        .addComponent(jt_PrimerApellEmplMod, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel50)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jt_SegundoApellEmplMod, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_AsesorMecanicoModificarLayout.createSequentialGroup()
+                        .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel46)
+                            .addComponent(jLabel43)
+                            .addComponent(jLabel45)
+                            .addComponent(jLabel44))
+                        .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_AsesorMecanicoModificarLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jt_tipoAMmod, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                        .addComponent(jt_telefonoAMod)
+                                        .addComponent(jb_RegistrarEmpleado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jt_AMmod))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AsesorMecanicoModificarLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jt_idAModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(265, 265, 265)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_AsesorMecanicoModificarLayout.setVerticalGroup(
+            jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AsesorMecanicoModificarLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel42)
+                .addGap(18, 18, 18)
+                .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel44)
+                    .addComponent(jt_idAModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_AsesorMecanicoModificarLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel47)
+                            .addComponent(jt_SegundoNomEmplMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_AsesorMecanicoModificarLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel49)
+                            .addComponent(jt_PrimerNomEmplMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel48)
+                            .addComponent(jt_PrimerApellEmplMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel50)
+                            .addComponent(jt_SegundoApellEmplMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jt_telefonoAMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jt_tipoAMmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_AsesorMecanicoModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel46)
+                    .addComponent(jt_AMmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(jb_RegistrarEmpleado1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1223,13 +1376,13 @@ public class principal extends javax.swing.JFrame {
         String Direccion = jt_clienteDireccionRegistro.getText();
         String contraseña = jt_ContraCliente.getText();
         if (Segnombre == null) {
-            
-        }else if (SegApellido == null) {
-            
-        }else if(contraseña == null || Direccion == null || id_cliente == 0){
+
+        } else if (SegApellido == null) {
+
+        } else if (contraseña == null || Direccion == null || id_cliente == 0) {
             JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Un campo esta incompleto o no es valido");
-        }else{
-            
+        } else {
+
         }
         this.jd_clienteRegistro.setVisible(false);
         this.show();
@@ -1245,13 +1398,62 @@ public class principal extends javax.swing.JFrame {
         String tipo = jt_tipoAMRegistro.getText();
         String telefono = jt_telefonoAMRegistro.getText();
         int taller = 1;
+        if (tipo == "Mecánico") {
+            tipo = "3";
+        } else {
+            tipo = "2";
+        }
         if (Segnombre == null) {
-            
-        }else if (SegApellido == null) {
-            
-        }else if(contraseña == null || telefono == null || id == 0){
+            try {
+                conection.conectar();
+                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                stat.setString(1, "3");
+                stat.setInt(2, id);
+                stat.setString(3, nombre);
+                stat.setString(4, "-");
+                stat.setString(5, Apellido);
+                stat.setString(6, SegApellido);
+                stat.setString(7, contraseña);
+                stat.setString(8, "-");
+                stat.setString(9, "-");
+                stat.setString(10, "-");
+                stat.setString(11, telefono);
+                stat.setInt(12, taller);
+                stat.setInt(13, 0);
+                stat.executeUpdate();
+                stat.close();
+                conection.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (SegApellido == null) {
+            try {
+                conection.conectar();
+                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                stat.setString(1, "3");
+                stat.setInt(2, id);
+                stat.setString(3, nombre);
+                stat.setString(4, Segnombre);
+                stat.setString(5, Apellido);
+                stat.setString(6, "-");
+                stat.setString(7, contraseña);
+                stat.setString(8, "-");
+                stat.setString(9, "-");
+                stat.setString(10, "-");
+                stat.setString(11, telefono);
+                stat.setInt(12, taller);
+                stat.setInt(13, 0);
+                stat.executeUpdate();
+                stat.close();
+                conection.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (contraseña == null || telefono == null || id == 0) {
             JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Un campo esta incompleto o no es valido");
-        }else{
+        } else {
             try {
                 conection.conectar();
                 CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
@@ -1339,10 +1541,28 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_citasAsignadasActionPerformed
 
     private void jmi_modificarPerfilMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_modificarPerfilMecanicoActionPerformed
-        this.jd_AsesorMecanicoRegistro.pack();
-        this.jd_AsesorMecanicoRegistro.setLocationRelativeTo(this);
-        this.jd_AsesorMecanicoRegistro.setResizable(false);
-        this.jd_AsesorMecanicoRegistro.setVisible(true);
+        try {
+            PreparedStatement sql = conection.getConnection().prepareStatement("SELECT * FROM TBL_PERSONA WHERE ID_PERSONA=?");
+            sql.setInt(1, login);
+            PreparedStatement sql2 = conection.getConnection().prepareStatement("SELECT * FROM TBL_EMPLEADO WHERE ID_EMPLEADO=?");
+            sql2.setInt(1, login);
+            ResultSet datos = sql.executeQuery();
+            ResultSet datos2 = sql2.executeQuery();
+            jt_idAModificar.setText(datos.getInt(1) + "");
+            jt_PrimerNomEmplMod.setText(datos.getString(2));
+            jt_SegundoNomEmplMod.setText(datos.getString(3));
+            jt_PrimerApellEmplMod.setText(datos.getString(4));
+            jt_SegundoNomEmplMod.setText(datos.getString(5));
+            jt_AMmod.setText(datos.getString(6));
+            jt_tipoAMmod.setText(tipoUser);
+            jt_telefonoAMRegistro.setText(datos2.getString(2));
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.jd_AsesorMecanicoModificar.pack();
+        this.jd_AsesorMecanicoModificar.setLocationRelativeTo(this);
+        this.jd_AsesorMecanicoModificar.setResizable(false);
+        this.jd_AsesorMecanicoModificar.setVisible(true);
     }//GEN-LAST:event_jmi_modificarPerfilMecanicoActionPerformed
 
     private void jmi_registroDeCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registroDeCitasActionPerformed
@@ -1368,7 +1588,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_registroDeCitas1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       
+
     }//GEN-LAST:event_formWindowClosed
 
     private void btn_registrarAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarAutoActionPerformed
@@ -1377,8 +1597,16 @@ public class principal extends javax.swing.JFrame {
         String modelo = jt_modeloAutoRegistro.getText();
         if (placa == null || NumMotor == null || modelo == null) {
             JOptionPane.showMessageDialog(jd_registroAuto, "Campos no validos");
-        }else{
-            
+        } else {
+            try {
+                PreparedStatement sql = conection.getConnection().prepareStatement("INSERT INTO TBL_AUTOMOVIL VALUES(?,?,?,?)");
+                sql.setString(1, placa);
+                sql.setString(2, modelo);
+                sql.setString(3, NumMotor);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btn_registrarAutoActionPerformed
 
@@ -1405,6 +1633,54 @@ public class principal extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         conection.close();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jmi_eliminarPerfilMecanico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarPerfilMecanico1ActionPerformed
+        try {
+            conection.conectar();
+            CallableStatement stat = conection.getConnection().prepareCall("CALL DELETEUSER(?)");
+            stat.setInt(1, login);
+            stat.execute();
+            conection.close();
+            JOptionPane.showMessageDialog(this, "Se elimino usuario , se cerrara sesion");
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jmi_eliminarPerfilMecanico1ActionPerformed
+
+    private void jmi_eliminarPerfilMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarPerfilMecanicoActionPerformed
+        try {
+            conection.conectar();
+            CallableStatement stat = conection.getConnection().prepareCall("CALL DELETEUSER(?)");
+            stat.setInt(1, login);
+            stat.execute();
+            conection.close();
+            JOptionPane.showMessageDialog(this, "Se elimino usuario , se cerrara sesion");
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jmi_eliminarPerfilMecanicoActionPerformed
+
+    private void jb_RegistrarEmpleado1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegistrarEmpleado1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_RegistrarEmpleado1MouseClicked
+
+    private void jb_RegistrarEmpleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_RegistrarEmpleado1ActionPerformed
+        String nombre = jt_PrimerNomEmplMod.getText();
+        String Segnombre = jt_SegundoNomEmplMod.getText();
+        String Apellido = jt_PrimerApellEmplMod.getText();
+        String SegApellido = jt_SegundoNomEmplMod.getText();
+        int id = Integer.parseInt(jt_idAModificar.getText());
+        String contraseña = jt_AMmod.getText();
+        String tipo = jt_tipoAMRegistro.getText();
+        String telefono = jt_telefonoAMRegistro.getText();
+        int taller = 1;
+        if (tipo == "Mecánico") {
+            tipo = "3";
+        } else {
+            tipo = "2";
+        }
+    }//GEN-LAST:event_jb_RegistrarEmpleado1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1492,7 +1768,16 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1510,6 +1795,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JButton jb_RegistrarEmpleado;
+    private javax.swing.JButton jb_RegistrarEmpleado1;
+    private javax.swing.JDialog jd_AsesorMecanicoModificar;
     private javax.swing.JDialog jd_AsesorMecanicoRegistro;
     private javax.swing.JDialog jd_TelefonosCliente;
     private javax.swing.JDialog jd_clienteRegistro;
@@ -1547,29 +1834,37 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_verEstadosCliente;
     private javax.swing.JMenuItem jmi_verMensajes;
     private javax.swing.JTextField jt_AMContra;
+    private javax.swing.JTextField jt_AMmod;
     private javax.swing.JTextField jt_ClienteEmailRegistro;
     private javax.swing.JTextField jt_ContraCliente;
     private javax.swing.JTextField jt_IDClienteRegistro;
     private javax.swing.JTextField jt_PrimerApellClien;
     private javax.swing.JTextField jt_PrimerApellEmpl;
+    private javax.swing.JTextField jt_PrimerApellEmplMod;
     private javax.swing.JTextField jt_PrimerNomClien;
     private javax.swing.JTextField jt_PrimerNomEmpl;
+    private javax.swing.JTextField jt_PrimerNomEmplMod;
     private javax.swing.JTextField jt_SegundoApellClien;
     private javax.swing.JTextField jt_SegundoApellEmpl;
+    private javax.swing.JTextField jt_SegundoApellEmplMod;
     private javax.swing.JTextField jt_SegundoNomClien;
     private javax.swing.JTextField jt_SegundoNomEmpl;
+    private javax.swing.JTextField jt_SegundoNomEmplMod;
     private javax.swing.JTextField jt_clienteDireccionRegistro;
     private javax.swing.JTextField jt_codCitaHacer;
     private javax.swing.JTextField jt_codCitaTaller;
     private javax.swing.JTextField jt_codClienteCita;
     private javax.swing.JTextField jt_idAMRegistro;
+    private javax.swing.JTextField jt_idAModificar;
     private javax.swing.JTextField jt_modeloAutoRegistro;
     private javax.swing.JTextField jt_nombreClienteCita;
     private javax.swing.JTextField jt_numeroMotor;
     private javax.swing.JTextField jt_placaAutoCita;
     private javax.swing.JTextField jt_placaAutoRegistro;
     private javax.swing.JTextField jt_telefonoAMRegistro;
+    private javax.swing.JTextField jt_telefonoAMod;
     private javax.swing.JTextField jt_tipoAMRegistro;
+    private javax.swing.JTextField jt_tipoAMmod;
     private javax.swing.JTable jtable_TelefonoCliente;
     private javax.swing.JPasswordField pass_contraseñaLogin;
     private javax.swing.JSpinner sp_cantidadTelefonosCliente;
@@ -1581,4 +1876,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_verEstado;
     // End of variables declaration//GEN-END:variables
     BD conection = new BD();
+    int login;
+    String tipoUser;
 }
