@@ -135,6 +135,11 @@ public class principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel51 = new javax.swing.JLabel();
         cb_telefono_addCita = new javax.swing.JComboBox<>();
+        jLabel52 = new javax.swing.JLabel();
+        cb_tipo_addCita = new javax.swing.JComboBox<>();
+        jLabel53 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        ta_descripcion_addCita = new javax.swing.JTextArea();
         jd_mantenimientoReparacion = new javax.swing.JDialog();
         cb_elegirTipoReparacion = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -763,6 +768,16 @@ public class principal extends javax.swing.JFrame {
 
         jLabel51.setText("Telefono");
 
+        jLabel52.setText("Tipo");
+
+        cb_tipo_addCita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MANTENIMIENTO", "REPARACION" }));
+
+        jLabel53.setText("Descripcion");
+
+        ta_descripcion_addCita.setColumns(20);
+        ta_descripcion_addCita.setRows(5);
+        jScrollPane6.setViewportView(ta_descripcion_addCita);
+
         javax.swing.GroupLayout jd_hacerCitaLayout = new javax.swing.GroupLayout(jd_hacerCita.getContentPane());
         jd_hacerCita.getContentPane().setLayout(jd_hacerCitaLayout);
         jd_hacerCitaLayout.setHorizontalGroup(
@@ -775,54 +790,64 @@ public class principal extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addGap(6, 6, 6)
-                        .addComponent(jt_codCitaTaller)
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel26)
-                        .addGap(13, 13, 13)
-                        .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109))
-                    .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                                .addComponent(jLabel24)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jt_nombreClienteCita))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_hacerCitaLayout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jt_codClienteCita, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(4, 4, 4)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jt_codCitaHacer, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                                .addComponent(jLabel25)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jt_placaAutoCita, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(30, 30, 30))
-                    .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                         .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                                 .addComponent(jLabel51)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cb_telefono_addCita, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(210, 210, 210)
+                                .addComponent(cb_telefono_addCita, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                .addComponent(jLabel52)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_tipo_addCita, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(210, 210, 210)
+                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                                 .addComponent(jLabel27)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cb_horaIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btn_realizarCita, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_hacerCitaLayout.createSequentialGroup()
-                                    .addComponent(jLabel28)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_hacerCitaLayout.createSequentialGroup()
+                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_realizarCita, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                        .addComponent(jLabel53)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane6))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_hacerCitaLayout.createSequentialGroup()
+                                        .addComponent(jLabel22)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jt_codCitaTaller))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_hacerCitaLayout.createSequentialGroup()
+                                        .addComponent(jLabel24)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jt_nombreClienteCita))
+                                    .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                        .addComponent(jLabel23)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jt_codClienteCita, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(4, 4, 4)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                        .addComponent(jLabel21)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jt_codCitaHacer, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                        .addComponent(jLabel25)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jt_placaAutoCita, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(30, 30, 30))))
         );
         jd_hacerCitaLayout.setVerticalGroup(
             jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -855,13 +880,20 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(jt_codCitaTaller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel22))
                     .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28))
+                    .addComponent(jLabel28)
+                    .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel52)
+                        .addComponent(cb_tipo_addCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel53)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_realizarCita)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         cb_elegirTipoReparacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mantenimiento", "Reparación" }));
@@ -959,6 +991,12 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        jd_verCitasAsignadas.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jd_verCitasAsignadasComponentShown(evt);
+            }
+        });
 
         jLabel30.setText("Mis citas asignadas:");
 
@@ -1484,7 +1522,7 @@ public class principal extends javax.swing.JFrame {
         idtemp = id_cliente;
         if (comprabarid(id_cliente)) {
             JOptionPane.showMessageDialog(jd_clienteRegistro, "El id ya existe");
-        }else{
+        } else {
             if (Segnombre == null) {
                 Segnombre = "-";
                 try {
@@ -1606,8 +1644,8 @@ public class principal extends javax.swing.JFrame {
         if (comprabarid(id)) {
             JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Ya existe ese id");
             jt_idAMRegistro.setText("");
-        }else{
-            
+        } else {
+
             if (tipo == "Mecánico") {
                 tipo = "3";
             } else {
@@ -1953,22 +1991,43 @@ public class principal extends javax.swing.JFrame {
             conection.close();
         } catch (Exception e) {
         }
+        if (cb_tipo_addCita.getSelectedItem().toString().equals("MANTENIMIENTO")) {
+            try {
+                conection.conectar();
+                String salida = "INSERT INTO TBL_MANTENIMIENTO VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText()+"')";
+                conection.statement.execute(salida);
+                System.out.println(salida);
+                conection.close();
+            } catch (Exception e) {
+            }
+        }else{
+            try {
+                conection.conectar();
+                String salida = "INSERT INTO TBL_REPARACION VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText()+"')";
+                conection.statement.execute(salida);
+                System.out.println(salida);
+                conection.close();
+            } catch (Exception e) {
+            }
+        }
     }//GEN-LAST:event_btn_realizarCitaMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        conection.conectar();
+        String bandera="";
         try {
+            conection.conectar();
             conection.statement.execute("SELECT (ID_PERSONA,PRIMERNOMBRE,SEGUNDONOMBRE,PRIMERAPELLIDO,SEGUNDOAPELLIDO) FROM TBL_PERSONA where ID_PERSONA=" + jt_codClienteCita.getText());
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
-                jt_nombreClienteCita.setText(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4));
+                bandera=rs.getString(1);
+                jt_nombreClienteCita.setText(bandera + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4));
             }
+            conection.close();
         } catch (Exception e) {
         }
-        conection.close();
-        if (jt_nombreClienteCita.getText().equals("")) {
+        if (bandera.equals("")) {
             JOptionPane.showMessageDialog(this, "Cliente no registrado");
 
         } else {
@@ -1987,7 +2046,7 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
-<<<<<<< HEAD
+
     private void jb_finalizartelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_finalizartelefonoActionPerformed
         String telefono;
         DefaultTableModel model = (DefaultTableModel) jtable_TelefonoCliente.getModel();
@@ -2026,11 +2085,11 @@ public class principal extends javax.swing.JFrame {
         }
         return true;
     }
-=======
+
     private void jd_verEstadoVehiculosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_verEstadoVehiculosComponentShown
         // TODO add your handling code here:
-        DefaultTableModel modelo =(DefaultTableModel)tb_verEstadosCitasCliente.getModel();
-        
+        DefaultTableModel modelo = (DefaultTableModel) tb_verEstadosCitasCliente.getModel();
+
         conection.conectar();
         try {
             conection.statement.execute("SELECT (PLACA_DE_CARRO, ESTADO_CITA) FROM CITA where ID_CLIENTE=" + login);
@@ -2043,7 +2102,11 @@ public class principal extends javax.swing.JFrame {
         }
         conection.close();
     }//GEN-LAST:event_jd_verEstadoVehiculosComponentShown
->>>>>>> 09494b3fa0a6eac62990ecfc40ad80e7680e9066
+
+    private void jd_verCitasAsignadasComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_verCitasAsignadasComponentShown
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jd_verCitasAsignadasComponentShown
 
     /**
      * @param args the command line arguments
@@ -2096,6 +2159,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_elegirUsuario;
     private javax.swing.JComboBox<String> cb_horaIngresa;
     private javax.swing.JComboBox<String> cb_telefono_addCita;
+    private javax.swing.JComboBox<String> cb_tipo_addCita;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2144,6 +2208,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2159,6 +2225,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JButton jb_RegistrarEmpleado;
     private javax.swing.JButton jb_RegistrarEmpleado1;
@@ -2236,6 +2303,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPasswordField pass_contraseñaLogin;
     private javax.swing.JSpinner sp_cantidadTelefonosCliente;
     private javax.swing.JTextArea ta_descripcionReparacion;
+    private javax.swing.JTextArea ta_descripcion_addCita;
     private javax.swing.JTextArea ta_mensajes;
     private javax.swing.JTable tb_registroDeCitas;
     private javax.swing.JTable tb_verEstadosCitasCliente;
