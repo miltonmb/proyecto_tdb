@@ -274,10 +274,6 @@ public class principal extends javax.swing.JFrame {
         jd_clienteRegistro.getContentPane().setLayout(jd_clienteRegistroLayout);
         jd_clienteRegistroLayout.setHorizontalGroup(
             jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_clienteRegistroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(279, 279, 279))
             .addGroup(jd_clienteRegistroLayout.createSequentialGroup()
                 .addGroup(jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_clienteRegistroLayout.createSequentialGroup()
@@ -320,10 +316,15 @@ public class principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jt_IDClienteRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jd_clienteRegistroLayout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(bt_registrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_clienteRegistroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_clienteRegistroLayout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(279, 279, 279))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_clienteRegistroLayout.createSequentialGroup()
+                        .addComponent(bt_registrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(368, 368, 368))))
         );
         jd_clienteRegistroLayout.setVerticalGroup(
             jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,8 +370,9 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(jd_clienteRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jt_ContraCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(bt_registrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(bt_registrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel10.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
@@ -1160,6 +1162,8 @@ public class principal extends javax.swing.JFrame {
         jt_tipoAMmod.setEditable(false);
         jt_tipoAMmod.setEnabled(false);
 
+        jt_idAModificar.setEnabled(false);
+
         jb_RegistrarEmpleado1.setText("Completar");
         jb_RegistrarEmpleado1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1355,7 +1359,62 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseClicked
-
+        long id = Long.parseLong(tf_usuarioLogin.getText());
+        String contraseña = pass_contraseñaLogin.getText();
+        try {
+            conection.conectar();
+            PreparedStatement stat = conection.getConnection().prepareStatement("SELECT * FROM TBL_PERSONA WHERE ID_PERSONA = ? AND CONTRASENA = ?");
+            stat.setLong(1, id);
+            stat.setString(2, contraseña);
+            ResultSet datos = stat.executeQuery();;
+            if (datos.next()) {
+                PreparedStatement statcliente = conection.getConnection().prepareStatement("SELECT * FROM TBL_CLIENTE WHERE ID_CLIENTE = ?");
+                statcliente.setLong(1, id);
+                ResultSet datos2 = statcliente.executeQuery();
+                if (!datos2.next()) {
+                    PreparedStatement statmeca = conection.getConnection().prepareStatement("SELECT * FROM TBL_MECANICO WHERE ID_MECANICO = ?");
+                    statmeca.setLong(1, id);
+                    ResultSet datos3 = statmeca.executeQuery();
+                    if (!datos3.next()) {
+                        PreparedStatement statase = conection.getConnection().prepareStatement("SELECT * FROM TBL_ASESOR WHERE ID_ASESOR = ?");
+                        statase.setLong(1, id);
+                        ResultSet datos4 = statase.executeQuery();
+                        if (!datos4.next()) {
+                            JOptionPane.showMessageDialog(this, "Usuario no encontrado");
+                        } else {
+                            login = id;
+                            tipoUser = "Asesor";
+                            this.jd_perfilAsesor.pack();
+                            this.jd_perfilAsesor.setResizable(false);
+                            this.jd_perfilAsesor.setLocationRelativeTo(this);
+                            this.jd_perfilAsesor.setVisible(true);
+                            this.hide();
+                        }
+                    } else {
+                        login = id;
+                        tipoUser = "Mecánico";
+                        this.jd_perfilMecanico.pack();
+                        this.jd_perfilMecanico.setResizable(false);
+                        this.jd_perfilMecanico.setLocationRelativeTo(this);
+                        this.jd_perfilMecanico.setVisible(true);
+                        this.hide();
+                    }
+                } else {
+                    login = id;
+                    tipoUser = "Cliente";
+                    this.jd_perfilUsuario.pack();
+                    this.jd_perfilUsuario.setResizable(false);
+                    this.jd_perfilUsuario.setLocationRelativeTo(this);
+                    this.jd_perfilUsuario.setVisible(true);
+                    this.hide();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario/Contraseña incorrectos");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conection.close();
     }//GEN-LAST:event_bt_loginMouseClicked
 
     private void bt_elegirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_elegirMouseClicked
@@ -1397,9 +1456,9 @@ public class principal extends javax.swing.JFrame {
         String Direccion = jt_clienteDireccionRegistro.getText();
         String contraseña = jt_ContraCliente.getText();
         if (Segnombre == null) {
-
+            Segnombre = "-";
         } else if (SegApellido == null) {
-
+            SegApellido = "-";
         } else if (contraseña == null || Direccion == null || id_cliente == 0) {
             JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Un campo esta incompleto o no es valido");
         } else {
@@ -1428,7 +1487,7 @@ public class principal extends javax.swing.JFrame {
             try {
                 conection.conectar();
                 CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-                stat.setString(1, "3");
+                stat.setString(1, tipo);
                 stat.setInt(2, id);
                 stat.setString(3, nombre);
                 stat.setString(4, "-");
@@ -1452,7 +1511,7 @@ public class principal extends javax.swing.JFrame {
             try {
                 conection.conectar();
                 CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-                stat.setString(1, "3");
+                stat.setString(1, tipo);
                 stat.setInt(2, id);
                 stat.setString(3, nombre);
                 stat.setString(4, Segnombre);
@@ -1478,7 +1537,7 @@ public class principal extends javax.swing.JFrame {
             try {
                 conection.conectar();
                 CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-                stat.setString(1, "3");
+                stat.setString(1, tipo);
                 stat.setInt(2, id);
                 stat.setString(3, nombre);
                 stat.setString(4, Segnombre);
@@ -1556,20 +1615,24 @@ public class principal extends javax.swing.JFrame {
 
     private void jmi_modificarPerfilMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_modificarPerfilMecanicoActionPerformed
         try {
+            conection.conectar();
             PreparedStatement sql = conection.getConnection().prepareStatement("SELECT * FROM TBL_PERSONA WHERE ID_PERSONA=?");
-            sql.setInt(1, login);
+            sql.setLong(1, login);
             PreparedStatement sql2 = conection.getConnection().prepareStatement("SELECT * FROM TBL_EMPLEADO WHERE ID_EMPLEADO=?");
-            sql2.setInt(1, login);
+            sql2.setLong(1, login);
             ResultSet datos = sql.executeQuery();
             ResultSet datos2 = sql2.executeQuery();
+            datos.next();
+            datos2.next();
             jt_idAModificar.setText(datos.getInt(1) + "");
             jt_PrimerNomEmplMod.setText(datos.getString(2));
             jt_SegundoNomEmplMod.setText(datos.getString(3));
             jt_PrimerApellEmplMod.setText(datos.getString(4));
-            jt_SegundoNomEmplMod.setText(datos.getString(5));
+            jt_SegundoApellEmplMod.setText(datos.getString(5));
             jt_AMmod.setText(datos.getString(6));
             jt_tipoAMmod.setText(tipoUser);
-            jt_telefonoAMRegistro.setText(datos2.getString(2));
+            jt_telefonoAMod.setText(datos2.getString(2));
+            conection.close();
         } catch (SQLException ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1652,7 +1715,7 @@ public class principal extends javax.swing.JFrame {
         try {
             conection.conectar();
             CallableStatement stat = conection.getConnection().prepareCall("CALL DELETEUSER(?)");
-            stat.setInt(1, login);
+            stat.setLong(1, login);
             stat.execute();
             conection.close();
             JOptionPane.showMessageDialog(this, "Se elimino usuario , se cerrara sesion");
@@ -1666,7 +1729,7 @@ public class principal extends javax.swing.JFrame {
         try {
             conection.conectar();
             CallableStatement stat = conection.getConnection().prepareCall("CALL DELETEUSER(?)");
-            stat.setInt(1, login);
+            stat.setLong(1, login);
             stat.execute();
             conection.close();
             JOptionPane.showMessageDialog(this, "Se elimino usuario , se cerrara sesion");
@@ -1683,16 +1746,40 @@ public class principal extends javax.swing.JFrame {
         String nombre = jt_PrimerNomEmplMod.getText();
         String Segnombre = jt_SegundoNomEmplMod.getText();
         String Apellido = jt_PrimerApellEmplMod.getText();
-        String SegApellido = jt_SegundoNomEmplMod.getText();
+        String SegApellido = jt_SegundoApellEmplMod.getText();
         int id = Integer.parseInt(jt_idAModificar.getText());
         String contraseña = jt_AMmod.getText();
-        String tipo = jt_tipoAMRegistro.getText();
-        String telefono = jt_telefonoAMRegistro.getText();
+        String tipo = jt_tipoAMmod.getText();
+        String telefono = jt_telefonoAMod.getText();
         int taller = 1;
         if (tipo == "Mecánico") {
             tipo = "3";
         } else {
             tipo = "2";
+        }
+        try {
+            conection.conectar();
+            CallableStatement stat = conection.getConnection().prepareCall("{CALL UPDATEUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            stat.setString(1, tipo);
+            stat.setInt(2, id);
+            stat.setString(3, nombre);
+            stat.setString(4, Segnombre);
+            stat.setString(5, Apellido);
+            stat.setString(6, SegApellido);
+            stat.setString(7, contraseña);
+            stat.setString(8, "-");
+            stat.setString(9, "-");
+            stat.setString(10, "-");
+            stat.setString(11, telefono);
+            stat.setInt(12, taller);
+            stat.setInt(13, 0);
+            stat.executeUpdate();
+            stat.close();
+            conection.close();
+            JOptionPane.showMessageDialog(jd_AsesorMecanicoModificar, "Se modifico con exito");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jb_RegistrarEmpleado1ActionPerformed
 
@@ -1942,6 +2029,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_verEstado;
     // End of variables declaration//GEN-END:variables
     BD conection = new BD();
-    int login;
+    long login;
     String tipoUser;
 }
