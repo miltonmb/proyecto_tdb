@@ -6,6 +6,8 @@
 package proyecto_tdb;
 
 import java.awt.Color;
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -1235,9 +1237,9 @@ public class principal extends javax.swing.JFrame {
 
     private void jb_RegistrarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegistrarEmpleadoMouseClicked
         String nombre = jt_PrimerNomEmpl.getText();
-        String Segnombre = jt_PrimerNomEmpl.getText();
-        String Apellido = jt_PrimerNomEmpl.getText();
-        String SegApellido = jt_PrimerNomEmpl.getText();
+        String Segnombre = jt_SegundoNomEmpl.getText();
+        String Apellido = jt_PrimerApellEmpl.getText();
+        String SegApellido = jt_SegundoNomEmpl.getText();
         int id = Integer.parseInt(jt_idAMRegistro.getText());
         String contraseña = jt_AMContra.getText();
         String tipo = jt_tipoAMRegistro.getText();
@@ -1250,7 +1252,29 @@ public class principal extends javax.swing.JFrame {
         }else if(contraseña == null || telefono == null || id == 0){
             JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Un campo esta incompleto o no es valido");
         }else{
-            
+            try {
+                conection.conectar();
+                CallableStatement stat = conection.getConnection().prepareCall("{CALL ADDUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+                stat.setString(1, "3");
+                stat.setInt(2, id);
+                stat.setString(3, nombre);
+                stat.setString(4, Segnombre);
+                stat.setString(5, Apellido);
+                stat.setString(6, SegApellido);
+                stat.setString(7, contraseña);
+                stat.setString(8, "-");
+                stat.setString(9, "-");
+                stat.setString(10, "-");
+                stat.setString(11, telefono);
+                stat.setInt(12, taller);
+                stat.setInt(13, 0);
+                stat.executeUpdate();
+                stat.close();
+                conection.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         this.jd_AsesorMecanicoRegistro.setVisible(false);
         this.show();
