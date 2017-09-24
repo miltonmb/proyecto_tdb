@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -130,6 +131,9 @@ public class principal extends javax.swing.JFrame {
         jdate_fechaEntregaCita = new com.toedter.calendar.JDateChooser();
         btn_realizarCita = new javax.swing.JButton();
         cb_horaIngresa = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jLabel51 = new javax.swing.JLabel();
+        cb_telefono_addCita = new javax.swing.JComboBox<>();
         jd_mantenimientoReparacion = new javax.swing.JDialog();
         cb_elegirTipoReparacion = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -746,97 +750,114 @@ public class principal extends javax.swing.JFrame {
 
         cb_horaIngresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", " ", " " }));
 
+        jButton1.setText("VERIFICAR");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jLabel51.setText("Telefono");
+
         javax.swing.GroupLayout jd_hacerCitaLayout = new javax.swing.GroupLayout(jd_hacerCita.getContentPane());
         jd_hacerCita.getContentPane().setLayout(jd_hacerCitaLayout);
         jd_hacerCitaLayout.setHorizontalGroup(
             jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_hacerCitaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel20)
+                .addGap(203, 203, 203))
             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel20)
-                        .addGap(0, 124, Short.MAX_VALUE))
+                        .addComponent(jLabel22)
+                        .addGap(6, 6, 6)
+                        .addComponent(jt_codCitaTaller)
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel26)
+                        .addGap(13, 13, 13)
+                        .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109))
                     .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_hacerCitaLayout.createSequentialGroup()
-                                        .addComponent(jLabel21)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                                        .addComponent(jLabel22)
-                                        .addGap(6, 6, 6)))
-                                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jt_codCitaTaller, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                                    .addComponent(jt_codCitaHacer)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_hacerCitaLayout.createSequentialGroup()
-                                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel23)
-                                    .addComponent(jLabel24))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jt_codClienteCita)
-                                    .addComponent(jt_nombreClienteCita, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jt_nombreClienteCita))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_hacerCitaLayout.createSequentialGroup()
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jt_codClienteCita, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(4, 4, 4)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jt_codCitaHacer, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                                 .addComponent(jLabel25)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jt_placaAutoCita))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jt_placaAutoCita, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30))
+                    .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                                .addComponent(jLabel26)
+                                .addComponent(jLabel51)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                                .addComponent(jLabel28)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                .addComponent(cb_telefono_addCita, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(210, 210, 210)
                                 .addComponent(jLabel27)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cb_horaIngresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap())
-            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_realizarCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(264, 264, 264))
+                                .addComponent(cb_horaIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btn_realizarCita, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_hacerCitaLayout.createSequentialGroup()
+                                    .addComponent(jLabel28)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jd_hacerCitaLayout.setVerticalGroup(
             jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(jt_codCitaHacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25)
-                            .addComponent(jt_placaAutoCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
-                            .addComponent(jt_codCitaTaller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26))))
+                .addComponent(jLabel20)
                 .addGap(18, 18, 18)
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(jt_codCitaHacer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23)
                     .addComponent(jt_codClienteCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jt_nombreClienteCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(jt_placaAutoCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel51)
+                    .addComponent(cb_telefono_addCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
                     .addComponent(cb_horaIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel24)
-                        .addComponent(jt_nombreClienteCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel28))
-                    .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btn_realizarCita, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                .addContainerGap())
+                        .addComponent(jLabel26)
+                        .addComponent(jt_codCitaTaller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel22))
+                    .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_realizarCita)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         cb_elegirTipoReparacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mantenimiento", "Reparación" }));
@@ -1512,13 +1533,6 @@ public class principal extends javax.swing.JFrame {
         this.jd_clienteRegistro.setVisible(true);
     }//GEN-LAST:event_jmi_modificarPerfilClienteActionPerformed
 
-    private void btn_realizarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizarCitaMouseClicked
-        this.jd_mantenimientoReparacion.pack();
-        this.jd_mantenimientoReparacion.setLocationRelativeTo(this);
-        this.jd_mantenimientoReparacion.setResizable(false);
-        this.jd_mantenimientoReparacion.setVisible(true);
-    }//GEN-LAST:event_btn_realizarCitaMouseClicked
-
     private void jmi_verEstadosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_verEstadosClienteActionPerformed
         this.jd_verEstadoVehiculos.pack();
         this.jd_verEstadoVehiculos.setLocationRelativeTo(this);
@@ -1682,6 +1696,55 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jb_RegistrarEmpleado1ActionPerformed
 
+    private void btn_realizarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizarCitaMouseClicked
+        this.jd_mantenimientoReparacion.pack();
+        this.jd_mantenimientoReparacion.setLocationRelativeTo(this);
+        this.jd_mantenimientoReparacion.setResizable(false);
+        this.jd_mantenimientoReparacion.setVisible(true);
+        try {
+            conection.conectar();
+            String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + jt_codCitaTaller.getText() + "," + jt_codClienteCita.getText()
+                    + ",'" + jt_nombreClienteCita.getText() + "','" + jt_placaAutoCita.getText() + "',TO_DATE('" + jdate_fechaIngresoCita.getDate() + "','DD/MON/YY'),'" + cb_horaIngresa.getSelectedItem().toString()
+                    + "',TO_DATE('" + jdate_fechaEntregaCita.getDate() + "','DD/MON/YY'),'" + cb_telefono_addCita.getSelectedItem().toString() + "'," + "'NO INGRESADO')";
+            conection.statement.execute(salida);
+            System.out.println(salida);
+            conection.close();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btn_realizarCitaMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        conection.conectar();
+        try {
+            conection.statement.execute("SELECT (ID_PERSONA,PRIMERNOMBRE,SEGUNDONOMBRE,PRIMERAPELLIDO,SEGUNDOAPELLIDO) FROM TBL_PERSONA where ID_PERSONA=" + jt_codClienteCita.getText());
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                jt_nombreClienteCita.setText(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4));
+            }
+        } catch (Exception e) {
+        }
+        conection.close();
+        if (jt_nombreClienteCita.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Cliente no registrado");
+
+        } else {
+            conection.conectar();
+            try {
+                
+                conection.statement.execute("SELECT (TELEFONO) FROM TELEFONO_CLIENTE where ID_CLIENTE=" + jt_codClienteCita.getText());
+                ResultSet rs = conection.statement.getResultSet();
+                while (rs.next()) {
+                    modelo.addElement(rs.getString(1));
+                }
+            } catch (Exception e) {
+            }
+            conection.close();
+            cb_telefono_addCita.setModel(modelo);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1732,6 +1795,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_elegirTipoReparacion;
     private javax.swing.JComboBox<String> cb_elegirUsuario;
     private javax.swing.JComboBox<String> cb_horaIngresa;
+    private javax.swing.JComboBox<String> cb_telefono_addCita;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1778,6 +1843,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
