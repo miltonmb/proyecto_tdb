@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -896,6 +897,12 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jd_verEstadoVehiculos.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jd_verEstadoVehiculosComponentShown(evt);
+            }
+        });
+
         tb_verEstadosCitasCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -922,7 +929,7 @@ public class principal extends javax.swing.JFrame {
         );
         jd_verEstadoVehiculosLayout.setVerticalGroup(
             jd_verEstadoVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         jScrollPane3.setViewportView(jlist_mensajes);
@@ -1899,6 +1906,23 @@ public class principal extends javax.swing.JFrame {
             cb_telefono_addCita.setModel(modelo);
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jd_verEstadoVehiculosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_verEstadoVehiculosComponentShown
+        // TODO add your handling code here:
+        DefaultTableModel modelo =(DefaultTableModel)tb_verEstadosCitasCliente.getModel();
+        
+        conection.conectar();
+        try {
+            conection.statement.execute("SELECT (PLACA_DE_CARRO, ESTADO_CITA) FROM CITA where ID_CLIENTE=" + login);
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                Object[] r = {rs.getString(1), rs.getString(2)};
+                modelo.addRow(r);
+            }
+        } catch (Exception e) {
+        }
+        conection.close();
+    }//GEN-LAST:event_jd_verEstadoVehiculosComponentShown
 
     /**
      * @param args the command line arguments
