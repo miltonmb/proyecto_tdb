@@ -1675,6 +1675,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jt_idAModificar">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jb_RegistrarEmpleado1">
           <Properties>
