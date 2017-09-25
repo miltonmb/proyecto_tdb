@@ -1959,7 +1959,7 @@ public class principal extends javax.swing.JFrame {
                 jt_clienteDireccionRegistro.setText("");
                 jt_ContraCliente.setText("");
                 sp_cantidadTelefonosCliente.setValue(1);
-                
+
                 this.jd_TelefonosCliente.pack();
                 this.jd_TelefonosCliente.setResizable(false);
                 this.jd_TelefonosCliente.setLocationRelativeTo(this);
@@ -2442,7 +2442,10 @@ public class principal extends javax.swing.JFrame {
         }
         if (bandera.equals("")) {
             JOptionPane.showMessageDialog(this, "Cliente no registrado");
-
+            this.jd_clienteRegistro.pack();
+            this.jd_clienteRegistro.setLocationRelativeTo(this);
+            this.jd_clienteRegistro.setResizable(false);
+            this.jd_clienteRegistro.setVisible(true);
         } else {
             try {
                 conection.conectar();
@@ -2690,18 +2693,18 @@ public class principal extends javax.swing.JFrame {
 
     private void jd_registroDeCitasComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_registroDeCitasComponentShown
         // TODO add your handling code here:
-         DefaultTableModel modelo=(DefaultTableModel)tb_registroDeCitas.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tb_registroDeCitas.getModel();
         try {
             conection.conectar();
             conection.statement.execute("SELECT (FECHA, ESTADO_ANTERIOR, ESTADO_POSTERIOR) FROM HISTORIAL WHERE ID_CLIENTE =" + login);
             ResultSet rs = conection.statement.getResultSet();
-            
+
             while (rs.next()) {
-                Object[] a={rs.getDate(1),rs.getString(2),rs.getString(3)};
-                 modelo.addRow(a);
+                Object[] a = {rs.getDate(1), rs.getString(2), rs.getString(3)};
+                modelo.addRow(a);
             }
             conection.close();
-            
+
         } catch (Exception e) {
         }
         tb_registroDeCitas.setModel(modelo);
