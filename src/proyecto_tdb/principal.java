@@ -2687,7 +2687,22 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             conection.conectar();
-            conection.getConnection().prepareStatement("UPDATE CITA SET ESTADO_CITA WHERE CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString());
+            PreparedStatement sql = conection.getConnection().prepareStatement("SELECT ESTADO_CITA FROM CITA WHERE CODIGOCITA = ?");
+            sql.setLong(1, Long.parseLong(cb_citasAsignadas.getSelectedItem().toString()));
+            ResultSet datos = sql.executeQuery();
+            datos.next();
+            if (datos.getString(1).equals("No ingresado") && cb_cambiarEstado.getSelectedItem().toString().equals("Ingresado")) {
+                PreparedStatement sql2 = conection.getConnection().prepareStatement("SELECT ID_CLIENTE FROM CITA WHERE CODIGOCITA = ?");
+                sql.setLong(1, Long.parseLong(cb_citasAsignadas.getSelectedItem().toString()));
+                ResultSet datos2 = sql2.executeQuery();
+                datos2.next();
+                PreparedStatement sql3 = conection.getConnection().prepareStatement("SELECT CORREO_ELECTRONICO FROM TBL_CLIENTE WHERE ID_CLIENTE = ?");
+                sql.setLong(1,datos2.getLong(1));
+                ResultSet datos3 = sql3.executeQuery();
+                datos3.next();
+                enviarmail(datos3.getString(1));
+            }
+            conection.getConnection().prepareStatement("UPDATE CITA SET ESTADO_CITA" + cb_cambiarEstado.getSelectedItem().toString() + " WHERE CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString());
             conection.close();
         } catch (SQLException ex) {
         }
