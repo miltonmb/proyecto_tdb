@@ -2924,11 +2924,12 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             conection.conectar();
-            conection.statement.execute("UPDATE TBL_MECANICO SET ID_ASESOR = "+login+" WHERE ID_MECANICO =" + cb_codigoMecanicoAsignar.getSelectedItem().toString());
-            
-            ResultSet rs = conection.statement.getResultSet();
-
-            
+            PreparedStatement sql = conection.getConnection().prepareStatement("UPDATE TBL_MECANICO SET ID_ASESOR = ? WHERE ID_MECANICO = ?");
+            sql.setLong(1, login);
+            sql.setLong(2, Long.parseLong(cb_codigoMecanicoAsignar.getSelectedItem().toString()));
+            sql.executeUpdate();
+            /*conection.statement.execute("UPDATE TBL_MECANICO SET ID_ASESOR = "+login+" WHERE ID_MECANICO =" + cb_codigoMecanicoAsignar.getSelectedItem().toString());
+            ResultSet rs = conection.statement.getResultSet();*/
             conection.close();
 
         } catch (Exception e) {

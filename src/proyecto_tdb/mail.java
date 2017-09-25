@@ -42,7 +42,7 @@ public class mail {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("milton.pasos@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse("milton.pasos@gmail.com"));
+				InternetAddress.parse("marioraudales33@gmail.com"));
 			message.setSubject("Testing Subject");
 			message.setText("Dear Mail Crawler,"
 				+ "\n\n No spam to my email, please!");
