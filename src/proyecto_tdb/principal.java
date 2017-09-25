@@ -1679,6 +1679,12 @@ public class principal extends javax.swing.JFrame {
 
         jLabel69.setText("Codigo citas");
 
+        cb_codigoCitasAsignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_codigoCitasAsignarActionPerformed(evt);
+            }
+        });
+
         jLabel71.setText("Codigo Mecanico");
 
         cb_codigoMecanicoAsignar.addActionListener(new java.awt.event.ActionListener() {
@@ -1690,7 +1696,6 @@ public class principal extends javax.swing.JFrame {
         jLabel73.setText("Nombre");
 
         tf_nombreAsignarCita.setToolTipText("");
-        tf_nombreAsignarCita.setEnabled(false);
 
         jButton3.setText("ASIGNAR");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2690,7 +2695,7 @@ public class principal extends javax.swing.JFrame {
                 ResultSet datos2 = sql2.executeQuery();
                 datos2.next();
                 PreparedStatement sql3 = conection.getConnection().prepareStatement("SELECT CORREO_ELECTRONICO FROM TBL_CLIENTE WHERE ID_CLIENTE = ?");
-                sql.setLong(1,datos2.getLong(1));
+                sql.setLong(1, datos2.getLong(1));
                 ResultSet datos3 = sql3.executeQuery();
                 datos3.next();
                 enviarmail(datos3.getString(1));
@@ -2888,36 +2893,30 @@ public class principal extends javax.swing.JFrame {
 
     private void cb_codigoMecanicoAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_codigoMecanicoAsignarActionPerformed
         // TODO add your handling code here:
-        if (cb_codigoMecanicoAsignar.getSelectedIndex() > 0) {
-            try {
-                conection.conectar();
-                conection.statement.execute("SELECT PRIMERNOMBRE,PRIMERAPELLIDO FROM PERSONA WHERE ID_PERSONA =" + cb_codigoMecanicoAsignar.getSelectedItem().toString());
-                ResultSet rs = conection.statement.getResultSet();
-
-                while (rs.next()) {
-                    tf_nombreAsignarCita.setText(rs.getString(1) + " " + rs.getString(2));
-                }
-                conection.close();
-
-            } catch (Exception e) {
+        try {
+            conection.conectar();
+            conection.statement.execute("SELECT PRIMERNOMBRE, PRIMERAPELLIDO FROM TBL_PERSONA WHERE ID_PERSONA =" + cb_codigoMecanicoAsignar.getSelectedItem().toString());
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                tf_nombreAsignarCita.setText(rs.getString(1) + " " + rs.getString(2));
             }
+            conection.close();
+        } catch (Exception e) {
         }
+
     }//GEN-LAST:event_cb_codigoMecanicoAsignarActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
         try {
             conection.conectar();
-            conection.statement.execute("UPDATE TBL_MECANICO SET ID_ASESOR="+login+" WHERE ID_MECANICO =" + cb_codigoMecanicoAsignar.getSelectedItem().toString());
-            ResultSet rs = conection.statement.getResultSet();
+            conection.statement.execute("INSERT INTO TBL_CITAS_ASIGNADAS VALUES(" + cb_codigoMecanicoAsignar.getSelectedItem().toString() + "," + cb_codigoCitasAsignar.getSelectedItem().toString() + ")");
 
-            while (rs.next()) {
-                tf_nombreAsignarCita.setText(rs.getString(1) + " " + rs.getString(2));
-            }
             conection.close();
 
         } catch (Exception e) {
         }
+        JOptionPane.showMessageDialog(this, "Asignado");
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -2936,6 +2935,10 @@ public class principal extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(this, "Asignado");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cb_codigoCitasAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_codigoCitasAsignarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_codigoCitasAsignarActionPerformed
 
     boolean enviarmail(String mail) {
         final String username = "milton.pasos@gmail.com";
