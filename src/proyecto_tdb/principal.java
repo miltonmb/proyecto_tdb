@@ -837,7 +837,7 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        cb_horaIngresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", " ", " " }));
+        cb_horaIngresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", " ", " " }));
 
         jButton1.setText("VERIFICAR");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2432,10 +2432,11 @@ public class principal extends javax.swing.JFrame {
             conection.statement.execute("SELECT ESTADO_CITA FROM CITA where CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString());
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
-                tf_verEstado.setText(rs.getInt(1) + "");
+                tf_verEstado.setText(rs.getString(1) + "");
             }
             conection.close();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_bt_verEstadoCitaMouseClicked
 
@@ -2449,18 +2450,23 @@ public class principal extends javax.swing.JFrame {
             datos.next();
             if (datos.getString(1).equals("No ingresado") && cb_cambiarEstado.getSelectedItem().toString().equals("Ingresado")) {
                 PreparedStatement sql2 = conection.getConnection().prepareStatement("SELECT ID_CLIENTE FROM CITA WHERE CODIGOCITA = ?");
-                sql.setLong(1, Long.parseLong(cb_citasAsignadas.getSelectedItem().toString()));
+                sql2.setLong(1, Long.parseLong(cb_citasAsignadas.getSelectedItem().toString()));
                 ResultSet datos2 = sql2.executeQuery();
                 datos2.next();
                 PreparedStatement sql3 = conection.getConnection().prepareStatement("SELECT CORREO_ELECTRONICO FROM TBL_CLIENTE WHERE ID_CLIENTE = ?");
-                sql.setLong(1, datos2.getLong(1));
+                sql3.setLong(1, datos2.getLong(1));
                 ResultSet datos3 = sql3.executeQuery();
                 datos3.next();
                 enviarmail(datos3.getString(1));
             }
-            conection.getConnection().prepareStatement("UPDATE CITA SET ESTADO_CITA" + cb_cambiarEstado.getSelectedItem().toString() + " WHERE CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString());
+            PreparedStatement sql2 = conection.getConnection().prepareStatement("UPDATE CITA SET ESTADO_CITA = ? WHERE CODIGOCITA = ?");
+            sql2.setString(1,cb_cambiarEstado.getSelectedItem().toString());
+            sql2.setLong(2,Long.parseLong(cb_citasAsignadas.getSelectedItem().toString()));
+            sql2.executeUpdate();
+            //conection.getConnection().prepareStatement("UPDATE CITA SET ESTADO_CITA =" + cb_cambiarEstado.getSelectedItem().toString() + " WHERE CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString()).execute();
             conection.close();
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_bt_cambiarEstadoMouseClicked
 
@@ -2650,12 +2656,12 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        System.out.println(cb_codigoMecanicoAsignar.getSelectedItem()+"");
-        System.out.println(cb_codigoCitasAsignar.getSelectedItem()+"");
+        System.out.println(cb_codigoMecanicoAsignar.getSelectedItem() + "");
+        System.out.println(cb_codigoCitasAsignar.getSelectedItem() + "");
         try {
             conection.conectar();
-            String salida="INSERT INTO TBL_CITAS_ASIGNADAS VALUES("+cb_codigoMecanicoAsignar.getSelectedItem()+","+cb_codigoCitasAsignar.getSelectedItem()+ ")";
-            String salida2="INSERT INTO TBL_CITAS_ASIGNADAS VALUES(801,123)";
+            String salida = "INSERT INTO TBL_CITAS_ASIGNADAS VALUES(" + cb_codigoMecanicoAsignar.getSelectedItem() + "," + cb_codigoCitasAsignar.getSelectedItem() + ")";
+            String salida2 = "INSERT INTO TBL_CITAS_ASIGNADAS VALUES(801,123)";
             System.err.println(salida);
             System.out.println(salida2);
             conection.statement.execute(salida);
@@ -2760,12 +2766,13 @@ public class principal extends javax.swing.JFrame {
             try {
                 conection.conectar();
                 String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + Integer.parseInt(cb_codCitaTaller.getSelectedItem().toString()) + "," + jt_codClienteCita.getText()
-                + ",'" + jt_nombreClienteCita.getText() + "','" + cb_placaAutoCita.getSelectedItem().toString() + "',TO_DATE('" + f.format(jdate_fechaIngresoCita.getDate()) + "','mm-dd-yyyy'),'" + cb_horaIngresa.getSelectedItem().toString()
-                + "',TO_DATE('" + f.format(jdate_fechaEntregaCita.getDate()) + "','mm-dd-yyyy'),'" + cb_telefono_addCita.getSelectedItem().toString() + "'," + "'NO INGRESADO')";
+                        + ",'" + jt_nombreClienteCita.getText() + "','" + cb_placaAutoCita.getSelectedItem().toString() + "',TO_DATE('" + f.format(jdate_fechaIngresoCita.getDate()) + "','MM-dd-yyyy'),'" + cb_horaIngresa.getSelectedItem().toString()
+                        + "',TO_DATE('" + f.format(jdate_fechaEntregaCita.getDate()) + "','MM-dd-yyyy'),'" + cb_telefono_addCita.getSelectedItem().toString() + "'," + "'No ingresado')";
                 conection.statement.execute(salida);
                 System.out.println(salida);
                 conection.close();
             } catch (Exception e) {
+                e.printStackTrace();
             }
             if (cb_tipo_addCita.getSelectedItem().toString().equals("MANTENIMIENTO")) {
                 try {
