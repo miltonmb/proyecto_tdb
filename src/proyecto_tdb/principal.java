@@ -2496,96 +2496,6 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jb_RegistrarEmpleado1ActionPerformed
 
-    private void btn_realizarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizarCitaMouseClicked
-        SimpleDateFormat f = new SimpleDateFormat("mm-dd-yy");
-
-        if (!jt_codClienteCita.getText().equals("") || !jt_nombreClienteCita.getText().equals("") || !jt_codCitaHacer.getText().equals("")) {
-            try {
-                conection.conectar();
-                String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + Integer.parseInt(cb_codCitaTaller.getSelectedItem().toString()) + "," + jt_codClienteCita.getText()
-                        + ",'" + jt_nombreClienteCita.getText() + "','" + cb_placaAutoCita.getSelectedItem().toString() + "',TO_DATE('" + f.format(jdate_fechaIngresoCita.getDate()) + "','mm-dd-yyyy'),'" + cb_horaIngresa.getSelectedItem().toString()
-                        + "',TO_DATE('" + f.format(jdate_fechaEntregaCita.getDate()) + "','mm-dd-yyyy'),'" + cb_telefono_addCita.getSelectedItem().toString() + "'," + "'NO INGRESADO')";
-                conection.statement.execute(salida);
-                System.out.println(salida);
-                conection.close();
-            } catch (Exception e) {
-            }
-            if (cb_tipo_addCita.getSelectedItem().toString().equals("MANTENIMIENTO")) {
-                try {
-                    conection.conectar();
-                    String salida = "INSERT INTO TBL_MANTENIMIENTO VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
-                    conection.statement.execute(salida);
-                    System.out.println(salida);
-                    conection.close();
-                } catch (Exception e) {
-                }
-            } else {
-                try {
-                    conection.conectar();
-                    String salida = "INSERT INTO TBL_REPARACION VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
-                    conection.statement.execute(salida);
-                    System.out.println(salida);
-                    conection.close();
-                } catch (Exception e) {
-                }
-            }
-            JOptionPane.showMessageDialog(this, "Realizada exitozamente");
-        } else {
-            JOptionPane.showMessageDialog(this, "Datos invalidos");
-
-        }
-
-    }//GEN-LAST:event_btn_realizarCitaMouseClicked
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
-        String bandera = "";
-        try {
-            conection.conectar();
-            conection.statement.execute("SELECT PRIMERNOMBRE,SEGUNDONOMBRE,PRIMERAPELLIDO,SEGUNDOAPELLIDO FROM TBL_PERSONA where ID_PERSONA=" + jt_codClienteCita.getText());
-            ResultSet rs = conection.statement.getResultSet();
-            while (rs.next()) {
-                bandera = rs.getString(1);
-                jt_nombreClienteCita.setText(bandera + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4));
-            }
-            conection.close();
-        } catch (Exception e) {
-        }
-        if (bandera.equals("")) {
-            JOptionPane.showMessageDialog(this, "Cliente no registrado");
-            this.jd_clienteRegistro.pack();
-            this.jd_clienteRegistro.setLocationRelativeTo(this);
-            this.jd_clienteRegistro.setResizable(false);
-            this.jd_clienteRegistro.setVisible(true);
-        } else {
-            try {
-                conection.conectar();
-                conection.statement.execute("SELECT TELEFONO FROM TELEFONO_CLIENTE where ID_CLIENTE=" + jt_codClienteCita.getText());
-                ResultSet rs = conection.statement.getResultSet();
-                while (rs.next()) {
-                    modelo.addElement(rs.getString(1));
-                }
-                conection.close();
-            } catch (Exception e) {
-            }
-            cb_telefono_addCita.setModel(modelo);
-
-            try {
-                conection.conectar();
-                conection.statement.execute("SELECT PLACA FROM TBL_AUTOMOVIL where ID_CLIENTE=" + jt_codClienteCita.getText());
-                ResultSet rs = conection.statement.getResultSet();
-                while (rs.next()) {
-                    modelo2.addElement(rs.getString(1));
-                }
-                conection.close();
-            } catch (Exception e) {
-            }
-            cb_placaAutoCita.setModel(modelo2);
-        }
-    }//GEN-LAST:event_jButton1MouseClicked
-
 
     private void jb_finalizartelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_finalizartelefonoActionPerformed
         String telefono;
@@ -2845,22 +2755,6 @@ public class principal extends javax.swing.JFrame {
         this.jd_registroDeCitas.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jd_hacerCitaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_hacerCitaComponentShown
-        // TODO add your handling code here:
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        try {
-            conection.conectar();
-            conection.statement.execute("SELECT * FROM TBL_TALLER");
-            ResultSet rs = conection.statement.getResultSet();
-            while (rs.next()) {
-                modelo.addElement(rs.getInt(1));
-            }
-            conection.close();
-        } catch (Exception e) {
-        }
-        cb_codCitaTaller.setModel(modelo);
-    }//GEN-LAST:event_jd_hacerCitaComponentShown
-
     private void jd_asignarCitasComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_asignarCitasComponentShown
         // TODO add your handling code here:
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
@@ -2939,6 +2833,111 @@ public class principal extends javax.swing.JFrame {
     private void cb_codigoCitasAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_codigoCitasAsignarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_codigoCitasAsignarActionPerformed
+
+    private void jd_hacerCitaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_hacerCitaComponentShown
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try {
+            conection.conectar();
+            conection.statement.execute("SELECT * FROM TBL_TALLER");
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                modelo.addElement(rs.getInt(1));
+            }
+            conection.close();
+        } catch (Exception e) {
+        }
+        cb_codCitaTaller.setModel(modelo);
+    }//GEN-LAST:event_jd_hacerCitaComponentShown
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
+        String bandera = "";
+        try {
+            conection.conectar();
+            conection.statement.execute("SELECT PRIMERNOMBRE,SEGUNDONOMBRE,PRIMERAPELLIDO,SEGUNDOAPELLIDO FROM TBL_PERSONA where ID_PERSONA=" + jt_codClienteCita.getText());
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                bandera = rs.getString(1);
+                jt_nombreClienteCita.setText(bandera + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4));
+            }
+            conection.close();
+        } catch (Exception e) {
+        }
+        if (bandera.equals("")) {
+            JOptionPane.showMessageDialog(this, "Cliente no registrado");
+            this.jd_clienteRegistro.pack();
+            this.jd_clienteRegistro.setLocationRelativeTo(this);
+            this.jd_clienteRegistro.setResizable(false);
+            this.jd_clienteRegistro.setVisible(true);
+        } else {
+            try {
+                conection.conectar();
+                conection.statement.execute("SELECT TELEFONO FROM TELEFONO_CLIENTE where ID_CLIENTE=" + jt_codClienteCita.getText());
+                ResultSet rs = conection.statement.getResultSet();
+                while (rs.next()) {
+                    modelo.addElement(rs.getString(1));
+                }
+                conection.close();
+            } catch (Exception e) {
+            }
+            cb_telefono_addCita.setModel(modelo);
+
+            try {
+                conection.conectar();
+                conection.statement.execute("SELECT PLACA FROM TBL_AUTOMOVIL where ID_CLIENTE=" + jt_codClienteCita.getText());
+                ResultSet rs = conection.statement.getResultSet();
+                while (rs.next()) {
+                    modelo2.addElement(rs.getString(1));
+                }
+                conection.close();
+            } catch (Exception e) {
+            }
+            cb_placaAutoCita.setModel(modelo2);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void btn_realizarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizarCitaMouseClicked
+        SimpleDateFormat f = new SimpleDateFormat("mm-dd-yyyy");
+
+        if (!jt_codClienteCita.getText().equals("") || !jt_nombreClienteCita.getText().equals("") || !jt_codCitaHacer.getText().equals("")) {
+            try {
+                conection.conectar();
+                String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + Integer.parseInt(cb_codCitaTaller.getSelectedItem().toString()) + "," + jt_codClienteCita.getText()
+                + ",'" + jt_nombreClienteCita.getText() + "','" + cb_placaAutoCita.getSelectedItem().toString() + "',TO_DATE('" + f.format(jdate_fechaIngresoCita.getDate()) + "','mm-dd-yyyy'),'" + cb_horaIngresa.getSelectedItem().toString()
+                + "',TO_DATE('" + f.format(jdate_fechaEntregaCita.getDate()) + "','mm-dd-yyyy'),'" + cb_telefono_addCita.getSelectedItem().toString() + "'," + "'NO INGRESADO')";
+                conection.statement.execute(salida);
+                System.out.println(salida);
+                conection.close();
+            } catch (Exception e) {
+            }
+            if (cb_tipo_addCita.getSelectedItem().toString().equals("MANTENIMIENTO")) {
+                try {
+                    conection.conectar();
+                    String salida = "INSERT INTO TBL_MANTENIMIENTO VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
+                    conection.statement.execute(salida);
+                    System.out.println(salida);
+                    conection.close();
+                } catch (Exception e) {
+                }
+            } else {
+                try {
+                    conection.conectar();
+                    String salida = "INSERT INTO TBL_REPARACION VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
+                    conection.statement.execute(salida);
+                    System.out.println(salida);
+                    conection.close();
+                } catch (Exception e) {
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Realizada exitozamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "Datos invalidos");
+
+        }
+    }//GEN-LAST:event_btn_realizarCitaMouseClicked
 
     boolean enviarmail(String mail) {
         final String username = "milton.pasos@gmail.com";
