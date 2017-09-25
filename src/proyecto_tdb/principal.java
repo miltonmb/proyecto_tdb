@@ -1696,6 +1696,7 @@ public class principal extends javax.swing.JFrame {
         jLabel73.setText("Nombre");
 
         tf_nombreAsignarCita.setToolTipText("");
+        tf_nombreAsignarCita.setEnabled(false);
 
         jButton3.setText("ASIGNAR");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2771,7 +2772,7 @@ public class principal extends javax.swing.JFrame {
         }
         try {
             conection.conectar();
-            conection.statement.execute("SELECT ID_ASESOR FROM TBL_MECANICO WHERE ID_ASESOR =" + login);
+            conection.statement.execute("SELECT ID_MECANICO FROM TBL_MECANICO WHERE ID_ASESOR =" + login);
             ResultSet rs = conection.statement.getResultSet();
 
             while (rs.next()) {
@@ -2802,10 +2803,16 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
+        System.out.println(cb_codigoMecanicoAsignar.getSelectedItem()+"");
+        System.out.println(cb_codigoCitasAsignar.getSelectedItem()+"");
         try {
             conection.conectar();
-            conection.statement.execute("INSERT INTO TBL_CITAS_ASIGNADAS VALUES(" + cb_codigoMecanicoAsignar.getSelectedItem().toString() + "," + cb_codigoCitasAsignar.getSelectedItem().toString() + ")");
-
+            String salida="INSERT INTO TBL_CITAS_ASIGNADAS VALUES("+cb_codigoMecanicoAsignar.getSelectedItem()+","+cb_codigoCitasAsignar.getSelectedItem()+ ")";
+            String salida2="INSERT INTO TBL_CITAS_ASIGNADAS VALUES(801,123)";
+            System.err.println(salida);
+            System.out.println(salida2);
+            conection.statement.execute(salida);
+            System.out.println(salida);
             conection.close();
 
         } catch (Exception e) {
