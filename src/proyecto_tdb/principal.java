@@ -97,6 +97,7 @@ public class principal extends javax.swing.JFrame {
         jmi_verMensajes = new javax.swing.JMenuItem();
         jmi_hacerCitaCliente = new javax.swing.JMenuItem();
         jmi_borrarCliente = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jd_perfilMecanico = new javax.swing.JDialog();
         jLabel29 = new javax.swing.JLabel();
         jl_nombreMecanico = new javax.swing.JLabel();
@@ -610,6 +611,14 @@ public class principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jmi_borrarCliente);
+
+        jMenuItem1.setText("Historial de estados");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
@@ -1126,15 +1135,18 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jd_registroDeCitas.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jd_registroDeCitasComponentShown(evt);
+            }
+        });
+
         tb_registroDeCitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "FECHA", "ESTADO ANTERIOR", "nullESTADO POSTERIOR"
             }
         ));
         jScrollPane5.setViewportView(tb_registroDeCitas);
@@ -1147,9 +1159,7 @@ public class principal extends javax.swing.JFrame {
         );
         jd_registroDeCitasLayout.setVerticalGroup(
             jd_registroDeCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_registroDeCitasLayout.createSequentialGroup()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         jLabel37.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
@@ -2672,11 +2682,38 @@ public class principal extends javax.swing.JFrame {
 
     private void jmi_hacerCitaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_hacerCitaClienteActionPerformed
 
+        this.jd_hacerCita.pack();
+        this.jd_hacerCita.setLocationRelativeTo(this);
+        this.jd_hacerCita.setResizable(false);
+        this.jd_hacerCita.setVisible(true);
+    }//GEN-LAST:event_jmi_hacerCitaClienteActionPerformed
+
+    private void jd_registroDeCitasComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_registroDeCitasComponentShown
+        // TODO add your handling code here:
+         DefaultTableModel modelo=(DefaultTableModel)tb_registroDeCitas.getModel();
+        try {
+            conection.conectar();
+            conection.statement.execute("SELECT (FECHA, ESTADO_ANTERIOR, ESTADO_POSTERIOR) FROM HISTORIAL WHERE ID_CLIENTE =" + login);
+            ResultSet rs = conection.statement.getResultSet();
+            
+            while (rs.next()) {
+                Object[] a={rs.getDate(1),rs.getString(2),rs.getString(3)};
+                 modelo.addRow(a);
+            }
+            conection.close();
+            
+        } catch (Exception e) {
+        }
+        tb_registroDeCitas.setModel(modelo);
+    }//GEN-LAST:event_jd_registroDeCitasComponentShown
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
         this.jd_registroDeCitas.pack();
         this.jd_registroDeCitas.setLocationRelativeTo(this);
         this.jd_registroDeCitas.setResizable(false);
         this.jd_registroDeCitas.setVisible(true);
-    }//GEN-LAST:event_jmi_hacerCitaClienteActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2812,6 +2849,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
