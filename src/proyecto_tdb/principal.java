@@ -243,6 +243,14 @@ public class principal extends javax.swing.JFrame {
         jt_ContraCliente1 = new javax.swing.JTextField();
         jLabel67 = new javax.swing.JLabel();
         cb_miembromod = new javax.swing.JComboBox<>();
+        jd_asignarCitas = new javax.swing.JDialog();
+        jLabel69 = new javax.swing.JLabel();
+        cb_codigoCitasAsignar = new javax.swing.JComboBox<>();
+        jLabel71 = new javax.swing.JLabel();
+        cb_codigoMecanicoAsignar = new javax.swing.JComboBox<>();
+        jLabel73 = new javax.swing.JLabel();
+        tf_nombreAsignarCita = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         tf_usuarioLogin = new javax.swing.JTextField();
         pass_contraseñaLogin = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -1663,6 +1671,76 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jd_asignarCitas.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jd_asignarCitasComponentShown(evt);
+            }
+        });
+
+        jLabel69.setText("Codigo citas");
+
+        jLabel71.setText("Codigo Mecanico");
+
+        cb_codigoMecanicoAsignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_codigoMecanicoAsignarActionPerformed(evt);
+            }
+        });
+
+        jLabel73.setText("Nombre");
+
+        tf_nombreAsignarCita.setToolTipText("");
+        tf_nombreAsignarCita.setEnabled(false);
+
+        jButton3.setText("ASIGNAR");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_asignarCitasLayout = new javax.swing.GroupLayout(jd_asignarCitas.getContentPane());
+        jd_asignarCitas.getContentPane().setLayout(jd_asignarCitasLayout);
+        jd_asignarCitasLayout.setHorizontalGroup(
+            jd_asignarCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_asignarCitasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_asignarCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_asignarCitasLayout.createSequentialGroup()
+                        .addComponent(jLabel73)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_nombreAsignarCita))
+                    .addComponent(jButton3)
+                    .addGroup(jd_asignarCitasLayout.createSequentialGroup()
+                        .addComponent(jLabel71)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_codigoMecanicoAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_asignarCitasLayout.createSequentialGroup()
+                        .addComponent(jLabel69)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_codigoCitasAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        jd_asignarCitasLayout.setVerticalGroup(
+            jd_asignarCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_asignarCitasLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jd_asignarCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel69)
+                    .addComponent(cb_codigoCitasAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_asignarCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel71)
+                    .addComponent(cb_codigoMecanicoAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_asignarCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel73)
+                    .addComponent(tf_nombreAsignarCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -2423,7 +2501,7 @@ public class principal extends javax.swing.JFrame {
     private void btn_realizarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizarCitaMouseClicked
         SimpleDateFormat f = new SimpleDateFormat("mm-dd-yy");
 
-        if (!jt_codClienteCita.getText().equals("")||!jt_nombreClienteCita.getText().equals("")||!jt_codCitaHacer.getText().equals("")) {
+        if (!jt_codClienteCita.getText().equals("") || !jt_nombreClienteCita.getText().equals("") || !jt_codCitaHacer.getText().equals("")) {
             try {
                 conection.conectar();
                 String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + Integer.parseInt(cb_codCitaTaller.getSelectedItem().toString()) + "," + jt_codClienteCita.getText()
@@ -2454,11 +2532,11 @@ public class principal extends javax.swing.JFrame {
                 }
             }
             JOptionPane.showMessageDialog(this, "Realizada exitozamente");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Datos invalidos");
-            
+
         }
-        
+
     }//GEN-LAST:event_btn_realizarCitaMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -2770,6 +2848,70 @@ public class principal extends javax.swing.JFrame {
         cb_codCitaTaller.setModel(modelo);
     }//GEN-LAST:event_jd_hacerCitaComponentShown
 
+    private void jd_asignarCitasComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_asignarCitasComponentShown
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
+        try {
+            conection.conectar();
+            conection.statement.execute("SELECT CODIGOCITA FROM CITA");
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                modelo.addElement(rs.getInt(1));
+            }
+            conection.close();
+        } catch (Exception e) {
+        }
+        try {
+            conection.conectar();
+            conection.statement.execute("SELECT ID_ASESOR FROM TBL_MECANICO WHERE ID_ASESOR =" + login);
+            ResultSet rs = conection.statement.getResultSet();
+
+            while (rs.next()) {
+                modelo2.addElement(rs.getInt(1));
+            }
+            conection.close();
+
+        } catch (Exception e) {
+        }
+        cb_codigoCitasAsignar.setModel(modelo);
+        cb_codigoMecanicoAsignar.setModel(modelo2);
+    }//GEN-LAST:event_jd_asignarCitasComponentShown
+
+    private void cb_codigoMecanicoAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_codigoMecanicoAsignarActionPerformed
+        // TODO add your handling code here:
+        if (cb_codigoMecanicoAsignar.getSelectedIndex() > 0) {
+            try {
+                conection.conectar();
+                conection.statement.execute("SELECT PRIMERNOMBRE,PRIMERAPELLIDO FROM PERSONA WHERE ID_PERSONA =" + cb_codigoMecanicoAsignar.getSelectedItem().toString());
+                ResultSet rs = conection.statement.getResultSet();
+
+                while (rs.next()) {
+                    tf_nombreAsignarCita.setText(rs.getString(1) + " " + rs.getString(2));
+                }
+                conection.close();
+
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_cb_codigoMecanicoAsignarActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        try {
+            conection.conectar();
+            conection.statement.execute("UPDATE TBL_MECANICO SET ID_ASESOR="+login+" WHERE ID_MECANICO =" + cb_codigoMecanicoAsignar.getSelectedItem().toString());
+            ResultSet rs = conection.statement.getResultSet();
+
+            while (rs.next()) {
+                tf_nombreAsignarCita.setText(rs.getString(1) + " " + rs.getString(2));
+            }
+            conection.close();
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
     boolean enviarmail(String mail) {
         final String username = "milton.pasos@gmail.com";
         final String password = "cerrar12345";
@@ -2858,6 +3000,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_cambiarEstado;
     private javax.swing.JComboBox<String> cb_citasAsignadas;
     private javax.swing.JComboBox<String> cb_codCitaTaller;
+    private javax.swing.JComboBox<String> cb_codigoCitasAsignar;
+    private javax.swing.JComboBox<String> cb_codigoMecanicoAsignar;
     private javax.swing.JComboBox<String> cb_elegirTipoReparacion;
     private javax.swing.JComboBox<String> cb_elegirUsuario;
     private javax.swing.JComboBox<String> cb_horaIngresa;
@@ -2868,6 +3012,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_tipo_addCita;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2933,7 +3078,10 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
@@ -2956,6 +3104,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_AsesorMecanicoModificar;
     private javax.swing.JDialog jd_AsesorMecanicoRegistro;
     private javax.swing.JDialog jd_TelefonosCliente;
+    private javax.swing.JDialog jd_asignarCitas;
     private javax.swing.JDialog jd_asignarMecanicos;
     private javax.swing.JDialog jd_clienteModificar;
     private javax.swing.JDialog jd_clienteRegistro;
@@ -3042,6 +3191,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTable tb_registroDeCitas;
     private javax.swing.JTable tb_verEstadosCitasCliente;
     private javax.swing.JTextField tf_NombreasignarMecanigo;
+    private javax.swing.JTextField tf_nombreAsignarCita;
     private javax.swing.JTextField tf_usuarioLogin;
     private javax.swing.JTextField tf_verEstado;
     // End of variables declaration//GEN-END:variables
