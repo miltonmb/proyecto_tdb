@@ -2653,7 +2653,6 @@ public class principal extends javax.swing.JFrame {
         int telefono = (int) sp_cantidadTelefonosCliente1.getValue();
         String miembro = cb_miembromod.getSelectedItem().toString();
         idtemp = id_cliente;
-        Segnombre = "-";
         try {
             conection.conectar();
             CallableStatement stat = conection.getConnection().prepareCall("{CALL UPDATEUSER(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
