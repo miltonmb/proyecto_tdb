@@ -1448,14 +1448,23 @@ public class principal extends javax.swing.JFrame {
 
         buttonGroup1.add(rb_SIasignarMecanigo);
         rb_SIasignarMecanigo.setText("SI");
+        rb_SIasignarMecanigo.setEnabled(false);
 
         buttonGroup1.add(rb_NOasignarMecanigo);
         rb_NOasignarMecanigo.setSelected(true);
         rb_NOasignarMecanigo.setText("NO");
+        rb_NOasignarMecanigo.setEnabled(false);
 
         jButton2.setText("ASIGNAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel56.setText("Nombre");
+
+        tf_NombreasignarMecanigo.setEnabled(false);
 
         javax.swing.GroupLayout jd_asignarMecanicosLayout = new javax.swing.GroupLayout(jd_asignarMecanicos.getContentPane());
         jd_asignarMecanicos.getContentPane().setLayout(jd_asignarMecanicosLayout);
@@ -1466,7 +1475,7 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(jd_asignarMecanicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_asignarMecanicosLayout.createSequentialGroup()
                         .addComponent(jLabel54)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cb_asignarMecanigo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jd_asignarMecanicosLayout.createSequentialGroup()
                         .addComponent(jLabel55)
@@ -2910,6 +2919,22 @@ public class principal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            conection.conectar();
+            conection.statement.execute("UPDATE TBL_MECANICO SET ID_ASESOR = "+login+" WHERE ID_MECANICO =" + cb_codigoMecanicoAsignar.getSelectedItem().toString());
+            
+            ResultSet rs = conection.statement.getResultSet();
+
+            
+            conection.close();
+
+        } catch (Exception e) {
+        }
+        JOptionPane.showMessageDialog(this, "Asignado");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     boolean enviarmail(String mail) {
         final String username = "milton.pasos@gmail.com";
