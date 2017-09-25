@@ -1040,7 +1040,9 @@ public class principal extends javax.swing.JFrame {
         );
         jd_verEstadoVehiculosLayout.setVerticalGroup(
             jd_verEstadoVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_verEstadoVehiculosLayout.createSequentialGroup()
+                .addGap(0, 19, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jScrollPane3.setViewportView(jlist_mensajes);
@@ -1163,7 +1165,7 @@ public class principal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "FECHA", "ESTADO ANTERIOR", "nullESTADO POSTERIOR"
+                "FECHA", "ESTADO ANTERIOR", "ESTADO POSTERIOR"
             }
         ));
         jScrollPane5.setViewportView(tb_registroDeCitas);
@@ -2484,7 +2486,7 @@ public class principal extends javax.swing.JFrame {
         } else {
             try {
                 conection.conectar();
-                conection.statement.execute("SELECT (TELEFONO) FROM TELEFONO_CLIENTE where ID_CLIENTE=" + jt_codClienteCita.getText());
+                conection.statement.execute("SELECT TELEFONO FROM TELEFONO_CLIENTE where ID_CLIENTE=" + jt_codClienteCita.getText());
                 ResultSet rs = conection.statement.getResultSet();
                 while (rs.next()) {
                     modelo.addElement(rs.getString(1));
@@ -2496,7 +2498,7 @@ public class principal extends javax.swing.JFrame {
 
             try {
                 conection.conectar();
-                conection.statement.execute("SELECT (PLACA) FROM TBL_AUTOMOVIL where ID_CLIENTE=" + jt_codClienteCita.getText());
+                conection.statement.execute("SELECT PLACA FROM TBL_AUTOMOVIL where ID_CLIENTE=" + jt_codClienteCita.getText());
                 ResultSet rs = conection.statement.getResultSet();
                 while (rs.next()) {
                     modelo2.addElement(rs.getString(1));
@@ -2561,7 +2563,7 @@ public class principal extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tb_verEstadosCitasCliente.getModel();
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (PLACA_DE_CARRO, ESTADO_CITA) FROM CITA where ID_CLIENTE =" + login);
+            conection.statement.execute("SELECT PLACA_DE_CARRO, ESTADO_CITA FROM CITA where ID_CLIENTE =" + login);
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
                 Object[] r = {rs.getString(1), rs.getString(2)};
@@ -2577,7 +2579,7 @@ public class principal extends javax.swing.JFrame {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (CODIGO_CITAS) FROM TBL_CITAS_ASIGNADAS where ID_MECANICO =" + login);
+            conection.statement.execute("SELECT CODIGO_CITAS FROM TBL_CITAS_ASIGNADAS where ID_MECANICO =" + login);
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
                 modelo.addElement(rs.getInt(1));
@@ -2593,7 +2595,7 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (ESTADO_CITA) FROM CITA where CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString());
+            conection.statement.execute("SELECT ESTADO_CITA FROM CITA where CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString());
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
                 tf_verEstado.setText(rs.getInt(1) + "");
@@ -2618,7 +2620,7 @@ public class principal extends javax.swing.JFrame {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (ID_MECANICO) FROM TBL_MECANICO ");
+            conection.statement.execute("SELECT ID_MECANICO FROM TBL_MECANICO ");
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
                 modelo.addElement(rs.getInt(1));
@@ -2634,7 +2636,7 @@ public class principal extends javax.swing.JFrame {
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_asignarMecanigo.getModel();
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (PRIMERNOMBRE, PRIMERAPELLIDO) FROM TBL_PERSONA WHERE ID_PERSONA =" + cb_asignarMecanigo.getSelectedItem().toString());
+            conection.statement.execute("SELECT PRIMERNOMBRE, PRIMERAPELLIDO FROM TBL_PERSONA WHERE ID_PERSONA =" + cb_asignarMecanigo.getSelectedItem().toString());
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
                 tf_NombreasignarMecanigo.setText(rs.getString(1) + " " + rs.getString(2));
@@ -2644,7 +2646,7 @@ public class principal extends javax.swing.JFrame {
         }
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (ID_ASESOR) FROM TBL_MECANICO WHERE ID_MECANICO =" + cb_asignarMecanigo.getSelectedItem().toString());
+            conection.statement.execute("SELECT ID_ASESOR FROM TBL_MECANICO WHERE ID_MECANICO =" + cb_asignarMecanigo.getSelectedItem().toString());
             ResultSet rs = conection.statement.getResultSet();
             boolean bandera = false;
             while (rs.next()) {
@@ -2730,7 +2732,7 @@ public class principal extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tb_registroDeCitas.getModel();
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (FECHA, ESTADO_ANTERIOR, ESTADO_POSTERIOR) FROM HISTORIAL WHERE ID_CLIENTE =" + login);
+            conection.statement.execute("SELECT FECHA, ESTADO_ANTERIOR, ESTADO_POSTERIOR FROM HISTORIAL WHERE ID_CLIENTE =" + login);
             ResultSet rs = conection.statement.getResultSet();
 
             while (rs.next()) {

@@ -1269,7 +1269,10 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jScrollPane2" alignment="1" pref="300" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="281" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -1540,7 +1543,7 @@
                   <Table columnCount="3" rowCount="0">
                     <Column editable="true" title="FECHA" type="java.lang.Object"/>
                     <Column editable="true" title="ESTADO ANTERIOR" type="java.lang.Object"/>
-                    <Column editable="true" title="nullESTADO POSTERIOR" type="java.lang.Object"/>
+                    <Column editable="true" title="ESTADO POSTERIOR" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
