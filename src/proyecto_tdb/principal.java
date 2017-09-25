@@ -2423,7 +2423,7 @@ public class principal extends javax.swing.JFrame {
     private void btn_realizarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizarCitaMouseClicked
         SimpleDateFormat f = new SimpleDateFormat("mm-dd-yy");
 
-        if (!jt_codClienteCita.getText().equals("")||!jt_nombreClienteCita.getText().equals("")||!jt_codCitaHacer.getText().equals("")) {
+        if (!jt_codClienteCita.getText().equals("") || !jt_nombreClienteCita.getText().equals("") || !jt_codCitaHacer.getText().equals("")) {
             try {
                 conection.conectar();
                 String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + Integer.parseInt(cb_codCitaTaller.getSelectedItem().toString()) + "," + jt_codClienteCita.getText()
@@ -2454,11 +2454,11 @@ public class principal extends javax.swing.JFrame {
                 }
             }
             JOptionPane.showMessageDialog(this, "Realizada exitozamente");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Datos invalidos");
-            
+
         }
-        
+
     }//GEN-LAST:event_btn_realizarCitaMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -2609,7 +2609,22 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             conection.conectar();
-            conection.getConnection().prepareStatement("UPDATE CITA SET ESTADO_CITA WHERE CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString());
+            PreparedStatement sql = conection.getConnection().prepareStatement("SELECT ESTADO_CITA FROM CITA WHERE CODIGOCITA = ?");
+            sql.setLong(1, Long.parseLong(cb_citasAsignadas.getSelectedItem().toString()));
+            ResultSet datos = sql.executeQuery();
+            datos.next();
+            if (datos.getString(1).equals("No ingresado") && cb_cambiarEstado.getSelectedItem().toString().equals("Ingresado")) {
+                PreparedStatement sql2 = conection.getConnection().prepareStatement("SELECT ID_CLIENTE FROM CITA WHERE CODIGOCITA = ?");
+                sql.setLong(1, Long.parseLong(cb_citasAsignadas.getSelectedItem().toString()));
+                ResultSet datos2 = sql2.executeQuery();
+                datos2.next();
+                PreparedStatement sql3 = conection.getConnection().prepareStatement("SELECT CORREO_ELECTRONICO FROM TBL_CLIENTE WHERE ID_CLIENTE = ?");
+                sql.setLong(1,datos2.getLong(1));
+                ResultSet datos3 = sql3.executeQuery();
+                datos3.next();
+                enviarmail(datos3.getString(1));
+            }
+            conection.getConnection().prepareStatement("UPDATE CITA SET ESTADO_CITA" + cb_cambiarEstado.getSelectedItem().toString() + " WHERE CODIGOCITA =" + cb_citasAsignadas.getSelectedItem().toString());
             conection.close();
         } catch (SQLException ex) {
         }
