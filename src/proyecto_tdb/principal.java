@@ -2772,6 +2772,7 @@ public class principal extends javax.swing.JFrame {
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
+                return true
     }
     /**
      * @param args the command line arguments
