@@ -129,7 +129,6 @@ public class principal extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jt_codCitaHacer = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jt_codCitaTaller = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jt_codClienteCita = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
@@ -151,6 +150,7 @@ public class principal extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         ta_descripcion_addCita = new javax.swing.JTextArea();
         cb_placaAutoCita = new javax.swing.JComboBox<>();
+        cb_codCitaTaller = new javax.swing.JComboBox<>();
         jd_mantenimientoReparacion = new javax.swing.JDialog();
         cb_elegirTipoReparacion = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -800,6 +800,12 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jd_hacerCita.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jd_hacerCitaComponentShown(evt);
+            }
+        });
+
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel20.setText("REALIZAR CITA");
 
@@ -869,20 +875,21 @@ public class principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cb_tipo_addCita, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(210, 210, 210)
-                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cb_horaIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jd_hacerCitaLayout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                    .addComponent(jLabel27)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(cb_horaIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jd_hacerCitaLayout.createSequentialGroup()
+                                    .addComponent(jLabel26)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jd_hacerCitaLayout.createSequentialGroup()
                                 .addComponent(jLabel28)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jdate_fechaEntregaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_hacerCitaLayout.createSequentialGroup()
                         .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btn_realizarCita, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -894,8 +901,9 @@ public class principal extends javax.swing.JFrame {
                                         .addComponent(jScrollPane6))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_hacerCitaLayout.createSequentialGroup()
                                         .addComponent(jLabel22)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jt_codCitaTaller))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cb_codCitaTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_hacerCitaLayout.createSequentialGroup()
                                         .addComponent(jLabel24)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -946,8 +954,8 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel26)
-                        .addComponent(jt_codCitaTaller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel22))
+                        .addComponent(jLabel22)
+                        .addComponent(cb_codCitaTaller, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jdate_fechaIngresoCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jd_hacerCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2416,7 +2424,7 @@ public class principal extends javax.swing.JFrame {
         this.jd_mantenimientoReparacion.setVisible(true);
         try {
             conection.conectar();
-            String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + jt_codCitaTaller.getText() + "," + jt_codClienteCita.getText()
+            String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + Integer.parseInt(cb_codCitaTaller.getSelectedItem().toString()) + "," + jt_codClienteCita.getText()
                     + ",'" + jt_nombreClienteCita.getText() + "','" + cb_placaAutoCita.getSelectedItem().toString() + "',TO_DATE('" + jdate_fechaIngresoCita.getDate() + "','DD/MON/YY'),'" + cb_horaIngresa.getSelectedItem().toString()
                     + "',TO_DATE('" + jdate_fechaEntregaCita.getDate() + "','DD/MON/YY'),'" + cb_telefono_addCita.getSelectedItem().toString() + "'," + "'NO INGRESADO')";
             conection.statement.execute(salida);
@@ -2452,7 +2460,7 @@ public class principal extends javax.swing.JFrame {
         String bandera = "";
         try {
             conection.conectar();
-            conection.statement.execute("SELECT (ID_PERSONA,PRIMERNOMBRE,SEGUNDONOMBRE,PRIMERAPELLIDO,SEGUNDOAPELLIDO) FROM TBL_PERSONA where ID_PERSONA=" + jt_codClienteCita.getText());
+            conection.statement.execute("SELECT PRIMERNOMBRE,SEGUNDONOMBRE,PRIMERAPELLIDO,SEGUNDOAPELLIDO FROM TBL_PERSONA where ID_PERSONA=" + jt_codClienteCita.getText());
             ResultSet rs = conection.statement.getResultSet();
             while (rs.next()) {
                 bandera = rs.getString(1);
@@ -2737,6 +2745,22 @@ public class principal extends javax.swing.JFrame {
         this.jd_registroDeCitas.setResizable(false);
         this.jd_registroDeCitas.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jd_hacerCitaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_hacerCitaComponentShown
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        try {
+            conection.conectar();
+            conection.statement.execute("SELECT * FROM TBL_TALLER");
+            ResultSet rs = conection.statement.getResultSet();
+            while (rs.next()) {
+                modelo.addElement(rs.getInt(1));
+            }
+            conection.close();
+        } catch (Exception e) {
+        }
+        cb_codCitaTaller.setModel(modelo);
+    }//GEN-LAST:event_jd_hacerCitaComponentShown
     
     boolean enviarmail(String mail){
         final String username = "milton.pasos@gmail.com";
@@ -2824,6 +2848,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_asignarMecanigo;
     private javax.swing.JComboBox<String> cb_cambiarEstado;
     private javax.swing.JComboBox<String> cb_citasAsignadas;
+    private javax.swing.JComboBox<String> cb_codCitaTaller;
     private javax.swing.JComboBox<String> cb_elegirTipoReparacion;
     private javax.swing.JComboBox<String> cb_elegirUsuario;
     private javax.swing.JComboBox<String> cb_horaIngresa;
@@ -2985,7 +3010,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField jt_clienteDireccionRegistro;
     private javax.swing.JTextField jt_clienteDireccionRegistro1;
     private javax.swing.JTextField jt_codCitaHacer;
-    private javax.swing.JTextField jt_codCitaTaller;
     private javax.swing.JTextField jt_codClienteCita;
     private javax.swing.JTextField jt_idAMRegistro;
     private javax.swing.JTextField jt_idAModificar;
