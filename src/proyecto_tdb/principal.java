@@ -1174,7 +1174,7 @@ public class principal extends javax.swing.JFrame {
         jd_registroDeCitas.getContentPane().setLayout(jd_registroDeCitasLayout);
         jd_registroDeCitasLayout.setHorizontalGroup(
             jd_registroDeCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
         );
         jd_registroDeCitasLayout.setVerticalGroup(
             jd_registroDeCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1585,8 +1585,7 @@ public class principal extends javax.swing.JFrame {
                                         .addGap(105, 105, 105)
                                         .addComponent(jLabel67)
                                         .addGap(37, 37, 37)
-                                        .addComponent(cb_miembromod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(cb_miembromod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jd_clienteModificarLayout.createSequentialGroup()
                                 .addComponent(jLabel64)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2006,12 +2005,13 @@ public class principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jd_AsesorMecanicoRegistro, "Ya existe ese id");
             jt_idAMRegistro.setText("");
         } else {
-
-            if (tipo == "Mecánico") {
+            System.out.println(tipo);
+            if (tipo.equals("Mecánico")) {
                 tipo = "3";
             } else {
                 tipo = "2";
             }
+            System.out.println(tipo);
             if (Segnombre == null) {
                 try {
                     conection.conectar();
@@ -2793,9 +2793,9 @@ public class principal extends javax.swing.JFrame {
             message.setFrom(new InternetAddress("milton.pasos@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(mail));
-            message.setSubject("Testing Subject");
-            message.setText("Dear Mail Crawler,"
-                    + "\n\n No spam to my email, please!");
+            message.setSubject("Cita");
+            message.setText("Su Carro a sido ingresado,"
+                    + "\n\n porfavor estar atento");
 
             Transport.send(message);
 
