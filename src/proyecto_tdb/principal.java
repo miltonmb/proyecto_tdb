@@ -1753,6 +1753,7 @@ public class principal extends javax.swing.JFrame {
 
                             login = id;
                             tipoUser = "Asesor";
+                            templogin = 2;
                             jl_nombreMecanico1.setText(datos.getString(2));
                             this.jd_perfilAsesor.pack();
                             this.jd_perfilAsesor.setResizable(false);
@@ -1763,6 +1764,7 @@ public class principal extends javax.swing.JFrame {
                     } else {
                         login = id;
                         tipoUser = "Mecánico";
+                        templogin = 3;
                         jl_nombreMecanico.setText(datos.getString(2));
                         this.jd_perfilMecanico.pack();
                         this.jd_perfilMecanico.setResizable(false);
@@ -1774,6 +1776,8 @@ public class principal extends javax.swing.JFrame {
                     jl_nombreCliente.setText(datos.getString(2));
                     login = id;
                     tipoUser = "Cliente";
+                    templogin = 1;
+                    idtemp = id;
                     this.jd_perfilUsuario.pack();
                     this.jd_perfilUsuario.setResizable(false);
                     this.jd_perfilUsuario.setLocationRelativeTo(this);
@@ -2252,7 +2256,16 @@ public class principal extends javax.swing.JFrame {
                 conection.close();
                 JOptionPane.showMessageDialog(jd_registroAuto, "Auto Registrado");
                 jd_registroAuto.setVisible(false);
+                if (templogin == 1) {
                 jd_perfilUsuario.setVisible(true);
+                    
+                }else if(templogin == 2){
+                jd_perfilAsesor.setVisible(true);
+                    
+                }else{
+                    
+                jd_perfilMecanico.setVisible(true);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2960,4 +2973,5 @@ public class principal extends javax.swing.JFrame {
     long login;
     String tipoUser;
     long idtemp;
+    int templogin;
 }
