@@ -1740,7 +1740,7 @@ public class principal extends javax.swing.JFrame {
                         if (!datos4.next()) {
                             JOptionPane.showMessageDialog(this, "Usuario no encontrado");
                         } else {
-                            
+
                             login = id;
                             tipoUser = "Asesor";
                             jl_nombreMecanico1.setText(datos.getString(2));
@@ -1949,6 +1949,7 @@ public class principal extends javax.swing.JFrame {
                 jt_clienteDireccionRegistro.setText("");
                 jt_ContraCliente.setText("");
                 sp_cantidadTelefonosCliente.setValue(1);
+                
                 this.jd_TelefonosCliente.pack();
                 this.jd_TelefonosCliente.setResizable(false);
                 this.jd_TelefonosCliente.setLocationRelativeTo(this);
@@ -2236,6 +2237,7 @@ public class principal extends javax.swing.JFrame {
                 sql.setString(1, placa);
                 sql.setString(2, modelo);
                 sql.setString(3, NumMotor);
+                sql.setLong(4, idtemp);
                 sql.execute();
                 conection.close();
                 JOptionPane.showMessageDialog(jd_registroAuto, "Auto Registrado");
@@ -2443,7 +2445,7 @@ public class principal extends javax.swing.JFrame {
             } catch (Exception e) {
             }
             cb_telefono_addCita.setModel(modelo);
-            
+
             try {
                 conection.conectar();
                 conection.statement.execute("SELECT (PLACA) FROM TBL_AUTOMOVIL where ID_CLIENTE=" + jt_codClienteCita.getText());
@@ -2471,13 +2473,21 @@ public class principal extends javax.swing.JFrame {
                 sql.setString(2, telefono);
                 sql.execute();
                 conection.close();
+                this.jd_registroAuto.pack();
+                this.jd_registroAuto.setLocationRelativeTo(this);
+                this.jd_registroAuto.setResizable(false);
+                this.jd_registroAuto.setVisible(true);
             } catch (SQLException ex) {
                 Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
         JOptionPane.showMessageDialog(jd_TelefonosCliente, "Se creo el cliente correctamente");
         jd_TelefonosCliente.setVisible(false);
-        this.show();
+        this.jd_registroAuto.pack();
+        this.jd_registroAuto.setLocationRelativeTo(this);
+        this.jd_registroAuto.setResizable(false);
+        this.jd_registroAuto.setVisible(true);
     }//GEN-LAST:event_jb_finalizartelefonoActionPerformed
     boolean comprabarid(long id) {
         try {
@@ -2661,7 +2671,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_ContraCliente1ActionPerformed
 
     private void jmi_hacerCitaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_hacerCitaClienteActionPerformed
-        
+
         this.jd_registroDeCitas.pack();
         this.jd_registroDeCitas.setLocationRelativeTo(this);
         this.jd_registroDeCitas.setResizable(false);
