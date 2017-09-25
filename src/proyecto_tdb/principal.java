@@ -10,6 +10,7 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -2273,14 +2274,14 @@ public class principal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jd_registroAuto, "Auto Registrado");
                 jd_registroAuto.setVisible(false);
                 if (templogin == 1) {
-                jd_perfilUsuario.setVisible(true);
-                    
-                }else if(templogin == 2){
-                jd_perfilAsesor.setVisible(true);
-                    
-                }else{
-                    
-                jd_perfilMecanico.setVisible(true);
+                    jd_perfilUsuario.setVisible(true);
+
+                } else if (templogin == 2) {
+                    jd_perfilAsesor.setVisible(true);
+
+                } else {
+
+                    jd_perfilMecanico.setVisible(true);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -2418,39 +2419,44 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_RegistrarEmpleado1ActionPerformed
 
     private void btn_realizarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizarCitaMouseClicked
-        this.jd_mantenimientoReparacion.pack();
-        this.jd_mantenimientoReparacion.setLocationRelativeTo(this);
-        this.jd_mantenimientoReparacion.setResizable(false);
-        this.jd_mantenimientoReparacion.setVisible(true);
-        try {
-            conection.conectar();
-            String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + Integer.parseInt(cb_codCitaTaller.getSelectedItem().toString()) + "," + jt_codClienteCita.getText()
-                    + ",'" + jt_nombreClienteCita.getText() + "','" + cb_placaAutoCita.getSelectedItem().toString() + "',TO_DATE('" + jdate_fechaIngresoCita.getDate() + "','DD/MON/YY'),'" + cb_horaIngresa.getSelectedItem().toString()
-                    + "',TO_DATE('" + jdate_fechaEntregaCita.getDate() + "','DD/MON/YY'),'" + cb_telefono_addCita.getSelectedItem().toString() + "'," + "'NO INGRESADO')";
-            conection.statement.execute(salida);
-            System.out.println(salida);
-            conection.close();
-        } catch (Exception e) {
-        }
-        if (cb_tipo_addCita.getSelectedItem().toString().equals("MANTENIMIENTO")) {
+        SimpleDateFormat f = new SimpleDateFormat("mm-dd-yy");
+
+        if (!jt_codClienteCita.getText().equals("")||!jt_nombreClienteCita.getText().equals("")||!jt_codCitaHacer.getText().equals("")) {
             try {
                 conection.conectar();
-                String salida = "INSERT INTO TBL_MANTENIMIENTO VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
+                String salida = "INSERT INTO CITA VALUES(" + this.jt_codCitaHacer.getText() + "," + Integer.parseInt(cb_codCitaTaller.getSelectedItem().toString()) + "," + jt_codClienteCita.getText()
+                        + ",'" + jt_nombreClienteCita.getText() + "','" + cb_placaAutoCita.getSelectedItem().toString() + "',TO_DATE('" + f.format(jdate_fechaIngresoCita.getDate()) + "','mm-dd-yyyy'),'" + cb_horaIngresa.getSelectedItem().toString()
+                        + "',TO_DATE('" + f.format(jdate_fechaEntregaCita.getDate()) + "','mm-dd-yyyy'),'" + cb_telefono_addCita.getSelectedItem().toString() + "'," + "'NO INGRESADO')";
                 conection.statement.execute(salida);
                 System.out.println(salida);
                 conection.close();
             } catch (Exception e) {
             }
-        } else {
-            try {
-                conection.conectar();
-                String salida = "INSERT INTO TBL_REPARACION VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
-                conection.statement.execute(salida);
-                System.out.println(salida);
-                conection.close();
-            } catch (Exception e) {
+            if (cb_tipo_addCita.getSelectedItem().toString().equals("MANTENIMIENTO")) {
+                try {
+                    conection.conectar();
+                    String salida = "INSERT INTO TBL_MANTENIMIENTO VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
+                    conection.statement.execute(salida);
+                    System.out.println(salida);
+                    conection.close();
+                } catch (Exception e) {
+                }
+            } else {
+                try {
+                    conection.conectar();
+                    String salida = "INSERT INTO TBL_REPARACION VALUES(" + this.jt_codClienteCita.getText() + ",'" + ta_descripcion_addCita.getText() + "')";
+                    conection.statement.execute(salida);
+                    System.out.println(salida);
+                    conection.close();
+                } catch (Exception e) {
+                }
             }
+            JOptionPane.showMessageDialog(this, "Realizada exitozamente");
+        }else{
+            JOptionPane.showMessageDialog(this, "Datos invalidos");
+            
         }
+        
     }//GEN-LAST:event_btn_realizarCitaMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -2748,7 +2754,7 @@ public class principal extends javax.swing.JFrame {
 
     private void jd_hacerCitaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jd_hacerCitaComponentShown
         // TODO add your handling code here:
-        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         try {
             conection.conectar();
             conection.statement.execute("SELECT * FROM TBL_TALLER");
@@ -2761,43 +2767,44 @@ public class principal extends javax.swing.JFrame {
         }
         cb_codCitaTaller.setModel(modelo);
     }//GEN-LAST:event_jd_hacerCitaComponentShown
-    
-    boolean enviarmail(String mail){
+
+    boolean enviarmail(String mail) {
         final String username = "milton.pasos@gmail.com";
-		final String password = "cerrar12345";
+        final String password = "cerrar12345";
 
-		Properties props = new Properties();
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
 
-		Session session = Session.getInstance(props,
-		  new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
-			}
-		  });
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
 
-		try {
+        try {
 
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("milton.pasos@gmail.com"));
-			message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse(mail));
-			message.setSubject("Testing Subject");
-			message.setText("Dear Mail Crawler,"
-				+ "\n\n No spam to my email, please!");
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("milton.pasos@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(mail));
+            message.setSubject("Testing Subject");
+            message.setText("Dear Mail Crawler,"
+                    + "\n\n No spam to my email, please!");
 
-			Transport.send(message);
+            Transport.send(message);
 
-			System.out.println("Done");
+            System.out.println("Done");
 
-		} catch (MessagingException e) {
-			throw new RuntimeException(e);
-		}
-                return true;
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
+
     /**
      * @param args the command line arguments
      */
