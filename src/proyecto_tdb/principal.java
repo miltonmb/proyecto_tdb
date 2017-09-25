@@ -183,7 +183,6 @@ public class principal extends javax.swing.JFrame {
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jmi_registroDeCitas1 = new javax.swing.JMenuItem();
-        jmi_citasAsignadas1 = new javax.swing.JMenuItem();
         jmi_modificarPerfilMecanico1 = new javax.swing.JMenuItem();
         jmi_eliminarPerfilMecanico1 = new javax.swing.JMenuItem();
         jm_AsignarMecanicos = new javax.swing.JMenuItem();
@@ -1197,21 +1196,13 @@ public class principal extends javax.swing.JFrame {
 
         jMenu3.setText("Opciones");
 
-        jmi_registroDeCitas1.setText("Registro de citas");
+        jmi_registroDeCitas1.setText("Asignar Citas");
         jmi_registroDeCitas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmi_registroDeCitas1ActionPerformed(evt);
             }
         });
         jMenu3.add(jmi_registroDeCitas1);
-
-        jmi_citasAsignadas1.setText("Ver citas asignadas");
-        jmi_citasAsignadas1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_citasAsignadas1ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jmi_citasAsignadas1);
 
         jmi_modificarPerfilMecanico1.setText("Modificar mi perfil");
         jmi_modificarPerfilMecanico1.addActionListener(new java.awt.event.ActionListener() {
@@ -2317,18 +2308,11 @@ public class principal extends javax.swing.JFrame {
         this.jd_AsesorMecanicoModificar.setVisible(true);
     }//GEN-LAST:event_jmi_modificarPerfilMecanico1ActionPerformed
 
-    private void jmi_citasAsignadas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_citasAsignadas1ActionPerformed
-        this.jd_verCitasAsignadas.pack();
-        this.jd_verCitasAsignadas.setLocationRelativeTo(this);
-        this.jd_verCitasAsignadas.setResizable(false);
-        this.jd_verCitasAsignadas.setVisible(true);
-    }//GEN-LAST:event_jmi_citasAsignadas1ActionPerformed
-
     private void jmi_registroDeCitas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registroDeCitas1ActionPerformed
-        this.jd_registroDeCitas.pack();
-        this.jd_registroDeCitas.setLocationRelativeTo(this);
-        this.jd_registroDeCitas.setResizable(false);
-        this.jd_registroDeCitas.setVisible(true);
+        this.jd_asignarCitas.pack();
+        this.jd_asignarCitas.setLocationRelativeTo(this);
+        this.jd_asignarCitas.setResizable(false);
+        this.jd_asignarCitas.setVisible(true);
     }//GEN-LAST:event_jmi_registroDeCitas1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -3144,7 +3128,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jm_AsignarMecanicos;
     private javax.swing.JMenuItem jmi_borrarCliente;
     private javax.swing.JMenuItem jmi_citasAsignadas;
-    private javax.swing.JMenuItem jmi_citasAsignadas1;
     private javax.swing.JMenuItem jmi_eliminarPerfilMecanico;
     private javax.swing.JMenuItem jmi_eliminarPerfilMecanico1;
     private javax.swing.JMenuItem jmi_hacerCitaCliente;

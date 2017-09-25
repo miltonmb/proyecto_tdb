@@ -1636,18 +1636,10 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jmi_registroDeCitas1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Registro de citas"/>
+                    <Property name="text" type="java.lang.String" value="Asignar Citas"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_registroDeCitas1ActionPerformed"/>
-                  </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jmi_citasAsignadas1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Ver citas asignadas"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_citasAsignadas1ActionPerformed"/>
                   </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jmi_modificarPerfilMecanico1">
