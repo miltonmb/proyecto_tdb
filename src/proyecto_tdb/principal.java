@@ -2900,8 +2900,8 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void btn_realizarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizarCitaMouseClicked
-        SimpleDateFormat f = new SimpleDateFormat("mm-dd-yyyy");
-
+        SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
+        System.out.println(f.format(jdate_fechaIngresoCita.getDate()));
         if (!jt_codClienteCita.getText().equals("") || !jt_nombreClienteCita.getText().equals("") || !jt_codCitaHacer.getText().equals("")) {
             try {
                 conection.conectar();
